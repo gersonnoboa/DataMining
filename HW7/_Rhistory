@@ -1,0 +1,512 @@
+r2_10_100 = getCost(roc2Cost, 10, 100)
+r2_10_100[which(r2_10_100$sum == min(r2_10_100$sum)), ]
+r2_100_10 = getCost(roc2Cost, 100, 10)
+r2_100_10[which(r2_100_10$sum == min(r2_100_10$sum)), ]
+roc2Cost
+getCost <- function(data, fpv, fnv){
+positives = nrow(subset(data, isTrue == TRUE))
+negatives = nrow(data) - roc1Positives
+positiveFraction = 1 / positives
+negativeFraction = 1 / negatives
+dataWithROC = getROCValues(data)
+#dataWithROC$fp = (dataWithROC$fpr * negatives)
+#dataWithROC$fpc = dataWithROC$fp * fpv
+#dataWithROC$tp = (dataWithROC$tpr * positives)
+#dataWithROC$fnc = dataWithROC$fn * fnv
+#dataWithROC$sum = dataWithROC$fpc + dataWithROC$fnc
+for(index in 1:nrow(dataWithROC)){
+shouldBePositive = dataWithROC[1:index,]
+countFn = 0
+for(posIndex in 1:nrow(shouldBePositive)){
+if (shouldBePositive[posIndex, 2] != TRUE){
+countFn = countFn + 1
+}
+}
+lowerBound = min(nrow(dataWithROC), index + 1)
+shouldBeNegative = dataWithROC[lowerBound:index,]
+countFp = 0
+for(negIndex in 1:nrow(shouldBeNegative)){
+if (shouldBeNegative[negIndex, 2] != FALSE){
+countFp = countFp + 1
+}
+}
+dataWithROC$sum[index] = (countFn * fnv) + (countFp * fpv)
+}
+return(dataWithROC)
+}
+roc1Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1Cost = roc1Cost[order(roc1Cost$order),]
+r1_10_100 = getCost(roc1Cost, 10, 100)
+r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+r1_100_10 = getCost(roc1Cost, 100, 10)
+r1_100_10[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+roc2Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC2order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc2Cost = roc2Cost[order(roc2Cost$order),]
+r2_10_100 = getCost(roc2Cost, 10, 100)
+r2_10_100[which(r2_10_100$sum == min(r2_10_100$sum)), ]
+r2_100_10 = getCost(roc2Cost, 100, 10)
+r2_100_10[which(r2_100_10$sum == min(r2_100_10$sum)), ]
+getCost <- function(data, fpv, fnv){
+positives = nrow(subset(data, isTrue == TRUE))
+negatives = nrow(data) - roc1Positives
+positiveFraction = 1 / positives
+negativeFraction = 1 / negatives
+dataWithROC = getROCValues(data)
+#dataWithROC$fp = (dataWithROC$fpr * negatives)
+#dataWithROC$fpc = dataWithROC$fp * fpv
+#dataWithROC$tp = (dataWithROC$tpr * positives)
+#dataWithROC$fnc = dataWithROC$fn * fnv
+#dataWithROC$sum = dataWithROC$fpc + dataWithROC$fnc
+for(index in 1:nrow(dataWithROC)){
+shouldBePositive = dataWithROC[1:index,]
+countFn = 0
+for(posIndex in 1:nrow(shouldBePositive)){
+if (shouldBePositive[posIndex, 2] != TRUE){
+countFn = countFn + 1
+}
+}
+lowerBound = min(nrow(dataWithROC), index + 1)
+shouldBeNegative = dataWithROC[lowerBound:nrow(dataWithROC),]
+countFp = 0
+for(negIndex in 1:nrow(shouldBeNegative)){
+if (shouldBeNegative[negIndex, 2] != FALSE){
+countFp = countFp + 1
+}
+}
+dataWithROC$sum[index] = (countFn * fnv) + (countFp * fpv)
+}
+return(dataWithROC)
+}
+roc1Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1Cost = roc1Cost[order(roc1Cost$order),]
+r1_10_100 = getCost(roc1Cost, 10, 100)
+r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+r1_100_10 = getCost(roc1Cost, 100, 10)
+r1_100_10[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+roc1Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1Cost = roc1Cost[order(roc1Cost$order),]
+r1_10_100 = getCost(roc1Cost, 10, 100)
+r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+r1_100_10 = getCost(roc1Cost, 100, 10)
+r1_100_10[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+r1_40_60 = getCost(roc1Cost, 40, 60)
+r1_40_60[which(r1_40_60$sum == min(r1_40_60$sum)), ]
+r1_60_40 = getCost(roc1Cost, 60, 40)
+r1_60_40[which(r1_60_40$sum == min(r1_60_40$sum)), ]
+r3_60_40[which(r3_60_40$sum == min(r3_60_40$sum)), ]
+roc3Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC3order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc3Cost = roc3Cost[order(roc3Cost$order),]
+r3_10_100 = getCost(roc3Cost, 10, 100)
+r3_10_100[which(r3_10_100$sum == min(r3_10_100$sum)), ]
+r3_100_10 = getCost(roc3Cost, 100, 10)
+r3_100_10[which(r3_100_10$sum == min(r3_100_10$sum)), ]
+r3_40_60 = getCost(roc3Cost, 40, 60)
+r3_40_60[which(r3_40_60$sum == min(r3_40_60$sum)), ]
+r3_60_40 = getCost(roc3Cost, 60, 40)
+r3_60_40[which(r3_60_40$sum == min(r3_60_40$sum)), ]
+paste("AUC Value 1:", auc(as.numeric(roc1$isTrue), roc1$order))
+paste("AUC Value 2:", auc(as.numeric(roc2$isTrue), roc2$order))
+paste("AUC Value 3:", auc(as.numeric(roc3$isTrue), roc3$order))
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ], aes(x=fpr, y= tpr))
+xlim(0,1.01) +
+ylim(0,1.01)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ], aes(x=fpr, y= tpr, color="10  FP, 100 FN"))
+xlim(0,1.01) +
+ylim(0,1.01)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ], aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = r1_10_100[which(r1_100_10$sum == min(r1_100_10$sum)), ], aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = r1_10_100[which(r1_40_60$sum == min(r1_40_60$sum)), ], aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = r1_10_100[which(r1_60_40$sum == min(r1_60_40$sum)), ], aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc2Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC2order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc2Cost = roc2Cost[order(roc2Cost$order),]
+r2_10_100 = getCost(roc2Cost, 10, 100)
+r2_100_10 = getCost(roc2Cost, 100, 10)
+r2_40_60 = getCost(roc2Cost, 40, 60)
+r2_60_40 = getCost(roc2Cost, 60, 40)
+ggplot() +
+geom_line(data=roc2, aes(x=fpr, y=tpr, color="Value 2")) +
+geom_point(data = r2_10_100[which(r2_10_100$sum == min(r2_10_100$sum)), ], aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = r2_10_100[which(r2_100_10$sum == min(r2_100_10$sum)), ], aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = r2_10_100[which(r2_40_60$sum == min(r2_40_60$sum)), ], aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = r2_10_100[which(r2_60_40$sum == min(r2_60_40$sum)), ], aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc1Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1Cost = roc1Cost[order(roc1Cost$order),]
+r1_10_100 = getCost(roc1Cost, 10, 100)
+r1_100_10 = getCost(roc1Cost, 100, 10)
+r1_40_60 = getCost(roc1Cost, 40, 60)
+r1_60_40 = getCost(roc1Cost, 60, 40)
+optimalr1c1 = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+optimalr1c2 = r1_10_100[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+optimalr1c3 = r1_10_100[which(r1_40_60$sum == min(r1_40_60$sum)), ]
+optimalr1c4 = r1_10_100[which(r1_60_40$sum == min(r1_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN": optimalr1c1)
+paste("Optimal for 10 FP, 100 FN":, optimalr1c1)
+paste("Optimal for 10 FP, 100 FN", optimalr1c1)
+paste("Optimal for 10 FP, 100 FN", optimalr1c1$tpr, optimalr1c1$fpr, optimalr1c1$sum)
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr1c1$tpr,", FPR:", optimalr1c1$fpr, ", SUM:", optimalr1c1$sum)
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr1c1$tpr,", FPR:", optimalr1c1$fpr, ", SUM:", optimalr1c1$sum)
+paste("Optimal for 100 FP, 10 FN", optimalr1c2$tpr,", FPR:", optimalr1c2$fpr, ", SUM:", optimalr1c2$sum)
+paste("Optimal for 40 FP, 60 FN", optimalr1c3$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c3$sum)
+paste("Optimal for 60 FP, 400 FN", optimalr1c4$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c4$sum)
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr1c1$tpr,", FPR:", optimalr1c1$fpr, ", SUM:", optimalr1c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr1c2$tpr,", FPR:", optimalr1c2$fpr, ", SUM:", optimalr1c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr1c3$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c3$sum)
+paste("Optimal for 60 FP, 400 FN -> TPR:", optimalr1c4$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c4$sum)
+optimalr1c1 = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+optimalr1c2 = r1_10_100[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+optimalr1c3 = r1_10_100[which(r1_40_60$sum == min(r1_40_60$sum)), ]
+optimalr1c4 = r1_10_100[which(r1_60_40$sum == min(r1_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr1c1$tpr,", FPR:", optimalr1c1$fpr, ", SUM:", optimalr1c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr1c2$tpr,", FPR:", optimalr1c2$fpr, ", SUM:", optimalr1c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr1c3$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c3$sum)
+paste("Optimal for 60 FP, 400 FN -> TPR:", optimalr1c4$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c4$sum)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = optimalr1c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr1c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr1c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr1c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc2Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC2order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc2Cost = roc2Cost[order(roc2Cost$order),]
+r2_10_100 = getCost(roc2Cost, 10, 100)
+r2_100_10 = getCost(roc2Cost, 100, 10)
+r2_40_60 = getCost(roc2Cost, 40, 60)
+r2_60_40 = getCost(roc2Cost, 60, 40)
+optimalr2c1 = r2_10_100[which(r2_10_100$sum == min(r2_10_100$sum)), ]
+optimalr2c2 = r2_10_100[which(r2_100_10$sum == min(r2_100_10$sum)), ]
+optimalr2c3 = r2_10_100[which(r2_40_60$sum == min(r2_40_60$sum)), ]
+optimalr2c4 = r2_10_100[which(r2_60_40$sum == min(r2_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr2c1$tpr,", FPR:", optimalr2c1$fpr, ", SUM:", optimalr2c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr2c2$tpr,", FPR:", optimalr2c2$fpr, ", SUM:", optimalr2c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr2c3$tpr,", FPR:", optimalr2c3$fpr, ", SUM:", optimalr2c3$sum)
+paste("Optimal for 60 FP, 400 FN -> TPR:", optimalr2c4$tpr,", FPR:", optimalr2c3$fpr, ", SUM:", optimalr2c4$sum)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = optimalr2c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr2c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr2c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr2c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+ggplot() +
+geom_line(data=roc2, aes(x=fpr, y=tpr, color="Value 2")) +
+geom_point(data = optimalr2c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr2c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr2c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr2c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc3Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC3order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc3Cost = roc3Cost[order(roc3Cost$order),]
+r3_10_100 = getCost(roc3Cost, 10, 100)
+r3_100_10 = getCost(roc3Cost, 100, 10)
+r3_40_60 = getCost(roc3Cost, 40, 60)
+r3_60_40 = getCost(roc3Cost, 60, 40)
+optimalr3c1 = r3_10_100[which(r3_10_100$sum == min(r3_10_100$sum)), ]
+optimalr3c2 = r3_10_100[which(r3_100_10$sum == min(r3_100_10$sum)), ]
+optimalr3c3 = r3_10_100[which(r3_40_60$sum == min(r3_40_60$sum)), ]
+optimalr3c4 = r3_10_100[which(r3_60_40$sum == min(r3_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr3c1$tpr,", FPR:", optimalr3c1$fpr, ", SUM:", optimalr3c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr3c2$tpr,", FPR:", optimalr3c2$fpr, ", SUM:", optimalr3c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr3c3$tpr,", FPR:", optimalr3c3$fpr, ", SUM:", optimalr3c3$sum)
+paste("Optimal for 60 FP, 400 FN -> TPR:", optimalr3c4$tpr,", FPR:", optimalr3c3$fpr, ", SUM:", optimalr3c4$sum)
+ggplot() +
+geom_line(data=roc3, aes(x=fpr, y=tpr, color="Value 3")) +
+geom_point(data = optimalr3c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr3c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr3c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr3c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(pROC)
+precision <- function(table){
+a = table[1,1]
+c = table[2,1]
+ret = a / (a * (a+c))
+return(ret)
+}
+recall <- function(table){
+a = table[1,1]
+b = table[1,2]
+ret = a/(a+b)
+return(ret)
+}
+accuracy <- function(table){
+a = table[1,1]
+b = table[1,2]
+c= table[2,1]
+d = table[2,2]
+ret = (a+d) / (a+b+c+d)
+return(ret)
+}
+f1Score <- function(table){
+p = precision(table)
+r = recall(table)
+upper = 2 * (p * r)
+lower = p + r
+return(upper/lower)
+}
+tableA <- matrix(c(225, 175, 100, 100), ncol=2)
+colnames(tableA) <- c("Predicted 1", "Predicted 0")
+rownames(tableA) <- c("Actual 1", "Actual 0")
+print("Table A")
+tableA
+paste("Precision", precision(tableA))
+paste("Recall", recall(tableA))
+paste("Accuracy", accuracy(tableA))
+paste("F1-Score", f1Score(tableA))
+tableB <- matrix(c(180, 75, 145, 200), ncol=2)
+colnames(tableB) <- c("Predicted 1", "Predicted 0")
+rownames(tableB) <- c("Actual 1", "Actual 0")
+print("Table B")
+tableB
+paste("Precision", precision(tableB))
+paste("Recall", recall(tableB))
+paste("Accuracy", accuracy(tableB))
+paste("F1-Score", f1Score(tableB))
+tableC <- matrix(c(100, 200, 50, 650), ncol=2)
+colnames(tableC) <- c("Predicted 1", "Predicted 0")
+rownames(tableC) <- c("Actual 1", "Actual 0")
+print("Table C")
+tableC
+paste("Precision", precision(tableC))
+paste("Recall", recall(tableC))
+paste("Accuracy", accuracy(tableC))
+paste("F1-Score", f1Score(tableC))
+tableD <- matrix(c(120, 350, 30, 500), ncol=2)
+colnames(tableD) <- c("Predicted 1", "Predicted 0")
+rownames(tableD) <- c("Actual 1", "Actual 0")
+print("Table D")
+tableD
+paste("Precision", precision(tableD))
+paste("Recall", recall(tableD))
+paste("Accuracy", accuracy(tableD))
+paste("F1-Score", f1Score(tableD))
+tpr = function(table){
+return(recall(table))
+}
+fpr = function(table){
+c = table[2,1]
+d = table[2,2]
+return(c/(c+d))
+}
+info = data.frame(name=c("A","B","C","D"), tpr=c(tpr(tableA), tpr(tableB), tpr(tableC), tpr(tableD)), fpr=c(fpr(tableA), fpr(tableB), fpr(tableC), fpr(tableD)))
+info
+ggplot(info, aes(x=fpr, y=tpr, color=name)) +
+geom_point() +
+xlim(0,1) +
+ylim(0,1)
+rocExample = read.csv("ROC_example_new.csv", header = TRUE, stringsAsFactors = TRUE, sep = ";")
+rocExample$ROC1order = as.numeric(scan(text=as.character(rocExample$ROC1order), dec=",", sep="."))
+rocExample$ROC2order = as.numeric(scan(text=as.character(rocExample$ROC2order), dec=",", sep="."))
+rocExample$ROC3order = as.numeric(scan(text=as.character(rocExample$ROC3order), dec=",", sep="."))
+rocExample
+getROCValues <- function(data){
+positives = nrow(subset(data, isTrue == TRUE))
+negatives = nrow(data) - roc1Positives
+positiveFraction = 1 / positives
+negativeFraction = 1 / negatives
+for(index in 1:nrow(data)){
+if (index == 1){
+if (data[index,2] == TRUE) data[index, 4] = positiveFraction else data[index, 5] = negativeFraction
+}else{
+if (data[index,2] == TRUE){
+data[index, 4] = data[index - 1, 4] + positiveFraction
+data[index, 5] = data[index - 1, 5]
+}  else{
+data[index, 4] = data[index - 1, 4]
+data[index, 5] = data[index - 1, 5] + negativeFraction
+}
+}
+}
+return(data)
+}
+roc1 = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1 = roc1[order(roc1$order),]
+roc1 = getROCValues(roc1)
+roc2 = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC2order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc2 = roc2[order(roc2$order),]
+roc2 = getROCValues(roc2)
+roc3 = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC3order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc3 = roc3[order(roc3$order),]
+roc3 = getROCValues(roc3)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_line(data=roc2, aes(x=fpr, y=tpr, color="Value 2")) +
+geom_line(data=roc3, aes(x=fpr, y=tpr, color="Value 3")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+library(pROC)
+paste("AUC Value 1:", auc(as.numeric(roc1$isTrue), roc1$order))
+paste("AUC Value 2:", auc(as.numeric(roc2$isTrue), roc2$order))
+paste("AUC Value 3:", auc(as.numeric(roc3$isTrue), roc3$order))
+getCost <- function(data, fpv, fnv){
+positives = nrow(subset(data, isTrue == TRUE))
+negatives = nrow(data) - roc1Positives
+positiveFraction = 1 / positives
+negativeFraction = 1 / negatives
+dataWithROC = getROCValues(data)
+for(index in 1:nrow(dataWithROC)){
+shouldBePositive = dataWithROC[1:index,]
+countFn = 0
+for(posIndex in 1:nrow(shouldBePositive)){
+if (shouldBePositive[posIndex, 2] != TRUE){
+countFn = countFn + 1
+}
+}
+lowerBound = min(nrow(dataWithROC), index + 1)
+shouldBeNegative = dataWithROC[lowerBound:nrow(dataWithROC),]
+countFp = 0
+for(negIndex in 1:nrow(shouldBeNegative)){
+if (shouldBeNegative[negIndex, 2] != FALSE){
+countFp = countFp + 1
+}
+}
+dataWithROC$sum[index] = (countFn * fnv) + (countFp * fpv)
+}
+return(dataWithROC)
+}
+roc1Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC1order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc1Cost = roc1Cost[order(roc1Cost$order),]
+r1_10_100 = getCost(roc1Cost, 10, 100)
+r1_100_10 = getCost(roc1Cost, 100, 10)
+r1_40_60 = getCost(roc1Cost, 40, 60)
+r1_60_40 = getCost(roc1Cost, 60, 40)
+optimalr1c1 = r1_10_100[which(r1_10_100$sum == min(r1_10_100$sum)), ]
+optimalr1c2 = r1_10_100[which(r1_100_10$sum == min(r1_100_10$sum)), ]
+optimalr1c3 = r1_10_100[which(r1_40_60$sum == min(r1_40_60$sum)), ]
+optimalr1c4 = r1_10_100[which(r1_60_40$sum == min(r1_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr1c1$tpr,", FPR:", optimalr1c1$fpr, ", SUM:", optimalr1c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr1c2$tpr,", FPR:", optimalr1c2$fpr, ", SUM:", optimalr1c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr1c3$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c3$sum)
+paste("Optimal for 60 FP, 40 FN -> TPR:", optimalr1c4$tpr,", FPR:", optimalr1c3$fpr, ", SUM:", optimalr1c4$sum)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_point(data = optimalr1c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr1c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr1c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr1c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc2Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC2order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc2Cost = roc2Cost[order(roc2Cost$order),]
+r2_10_100 = getCost(roc2Cost, 10, 100)
+r2_100_10 = getCost(roc2Cost, 100, 10)
+r2_40_60 = getCost(roc2Cost, 40, 60)
+r2_60_40 = getCost(roc2Cost, 60, 40)
+optimalr2c1 = r2_10_100[which(r2_10_100$sum == min(r2_10_100$sum)), ]
+optimalr2c2 = r2_10_100[which(r2_100_10$sum == min(r2_100_10$sum)), ]
+optimalr2c3 = r2_10_100[which(r2_40_60$sum == min(r2_40_60$sum)), ]
+optimalr2c4 = r2_10_100[which(r2_60_40$sum == min(r2_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr2c1$tpr,", FPR:", optimalr2c1$fpr, ", SUM:", optimalr2c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr2c2$tpr,", FPR:", optimalr2c2$fpr, ", SUM:", optimalr2c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr2c3$tpr,", FPR:", optimalr2c3$fpr, ", SUM:", optimalr2c3$sum)
+paste("Optimal for 60 FP, 40 FN -> TPR:", optimalr2c4$tpr,", FPR:", optimalr2c3$fpr, ", SUM:", optimalr2c4$sum)
+ggplot() +
+geom_line(data=roc2, aes(x=fpr, y=tpr, color="Value 2")) +
+geom_point(data = optimalr2c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr2c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr2c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr2c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc3Cost = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order=rocExample$ROC3order, tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc3Cost = roc3Cost[order(roc3Cost$order),]
+r3_10_100 = getCost(roc3Cost, 10, 100)
+r3_100_10 = getCost(roc3Cost, 100, 10)
+r3_40_60 = getCost(roc3Cost, 40, 60)
+r3_60_40 = getCost(roc3Cost, 60, 40)
+optimalr3c1 = r3_10_100[which(r3_10_100$sum == min(r3_10_100$sum)), ]
+optimalr3c2 = r3_10_100[which(r3_100_10$sum == min(r3_100_10$sum)), ]
+optimalr3c3 = r3_10_100[which(r3_40_60$sum == min(r3_40_60$sum)), ]
+optimalr3c4 = r3_10_100[which(r3_60_40$sum == min(r3_60_40$sum)), ]
+paste("Optimal for 10 FP, 100 FN -> TPR:", optimalr3c1$tpr,", FPR:", optimalr3c1$fpr, ", SUM:", optimalr3c1$sum)
+paste("Optimal for 100 FP, 10 FN -> TPR:", optimalr3c2$tpr,", FPR:", optimalr3c2$fpr, ", SUM:", optimalr3c2$sum)
+paste("Optimal for 40 FP, 60 FN -> TPR:", optimalr3c3$tpr,", FPR:", optimalr3c3$fpr, ", SUM:", optimalr3c3$sum)
+paste("Optimal for 60 FP, 40 FN -> TPR:", optimalr3c4$tpr,", FPR:", optimalr3c3$fpr, ", SUM:", optimalr3c4$sum)
+ggplot() +
+geom_line(data=roc3, aes(x=fpr, y=tpr, color="Value 3")) +
+geom_point(data = optimalr3c1, aes(x=fpr, y= tpr, color="10  FP, 100 FN")) +
+geom_point(data = optimalr3c2, aes(x=fpr, y= tpr, color="100  FP, 10 FN")) +
+geom_point(data = optimalr3c3, aes(x=fpr, y= tpr, color="40  FP, 60 FN")) +
+geom_point(data = optimalr3c4, aes(x=fpr, y= tpr, color="60  FP, 40 FN")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+roc4 = data.frame(ID=rocExample$ID, isTrue=rocExample$TRUE., order= (rocExample$ROC1order + rocExample$ROC2order + rocExample$ROC3order), tpr=rep(0,nrow(rocExample)), fpr=rep(0,nrow(rocExample)))
+roc4 = roc4[order(roc4$order),]
+roc4 = getROCValues(roc4)
+rocTemp = rocExample
+rocTemp = rocTemp[order(rocTemp$ROC1order),]
+rocTemp$rank1 = 1:(nrow(rocTemp))
+rocTemp = rocTemp[order(rocTemp$ROC2order),]
+rocTemp$rank2 = 1:(nrow(rocTemp))
+rocTemp = rocTemp[order(rocTemp$ROC3order),]
+rocTemp$rank3 = 1:(nrow(rocTemp))
+roc5 = data.frame(ID=rocTemp$ID, isTrue=rocTemp$TRUE., order= (rocTemp$rank1 + rocTemp$rank2 + rocTemp$rank3), tpr=rep(0,nrow(rocTemp)), fpr=rep(0,nrow(rocTemp)))
+roc5 = roc5[order(roc5$order),]
+roc5 = getROCValues(roc5)
+ggplot() +
+geom_line(data=roc1, aes(x=fpr, y=tpr, color="Value 1")) +
+geom_line(data=roc2, aes(x=fpr, y=tpr, color="Value 2")) +
+geom_line(data=roc3, aes(x=fpr, y=tpr, color="Value 3")) +
+geom_line(data=roc4, aes(x=fpr, y=tpr, color="Ensemble 1")) +
+geom_line(data=roc5, aes(x=fpr, y=tpr, color="Ensemble 2")) +
+xlim(0,1.01) +
+ylim(0,1.01)
+paste("AUC Value 1:", auc(as.numeric(roc1$isTrue), roc1$order))
+paste("AUC Value 2:", auc(as.numeric(roc2$isTrue), roc2$order))
+paste("AUC Value 3:", auc(as.numeric(roc3$isTrue), roc3$order))
+paste("AUC Ensemble 1:", auc(as.numeric(roc4$isTrue), roc4$order))
+paste("AUC Ensemble 2:", auc(as.numeric(roc5$isTrue), roc5$order))
+rmd2rscript <- function(infile){
+# read the file
+flIn <- readLines(infile)
+# identify the start of code blocks
+cdStrt <- which(grepl(flIn, pattern = "```{r*", perl = TRUE))
+# identify the end of code blocks
+cdEnd <- sapply(cdStrt, function(x){
+preidx <- which(grepl(flIn[-(1:x)], pattern = "```", perl = TRUE))[1]
+return(preidx + x)
+})
+# define an expansion function
+# strip code block indacators
+flIn[c(cdStrt, cdEnd)] <- ""
+expFun <- function(strt, End){
+strt <- strt+1
+End <- End-1
+return(strt:End)
+}
+idx <- unlist(mapply(FUN = expFun, strt = cdStrt, End = cdEnd,
+SIMPLIFY = FALSE))
+# add comments to all lines except code blocks
+comIdx <- 1:length(flIn)
+comIdx <- comIdx[-idx]
+for(i in comIdx){
+flIn[i] <- paste("#' ", flIn[i], sep = "")
+}
+# create an output file
+nm <- strsplit(infile, split = "\\.")[[1]][1]
+flOut <- file(paste(nm, "[rmd2r].R", sep = ""), "w")
+for(i in 1:length(flIn)){
+cat(flIn[i], "\n", file = flOut, sep = "\t")
+}
+close(flOut)
+}
+setwd("C:/Users/Gerson Noboa/Google Drive/Documentos/UT/S2/Data Mining/HW7")
+rmd2rscript("HW7_B66084.md")
+rmd2rscript("HW7_B66084.Rmd")
+head(rocExample)

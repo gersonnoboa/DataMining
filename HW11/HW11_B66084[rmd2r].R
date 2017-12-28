@@ -1,0 +1,273 @@
+#' ---	
+#' title: "HW11_B66084"	
+#' author: "Luis Gerson Noboa Martillo"	
+#' date: "8 de mayo de 2017"	
+#' output: html_document	
+#' ---	
+#' 	
+#' 	
+knitr::opts_chunk$set(echo = TRUE)	
+#' 	
+#' 	
+#' # Exercise 1	
+#' 	
+#' Selected counties were:	
+#' 	
+#' * Harju maakond	
+#' * Tartu maakond	
+#' * Viljandi maakond	
+#' 	
+#' ## Number of employees	
+#' 	
+#' * Harju maakond	
+#'     + SISEMINISTEERIUM (8.272)	
+#'     + KAITSEMINISTEERIUM (4.707)	
+#'     + MAXIMA EESTI OÜ (3.881)	
+#' * Tartu maakond	
+#'     + TARTU ÜLIKOOL (4.551)	
+#'     + TARTU ÜLIKOOLI KLIINIKUM, SIHTASUTUS (4.237)	
+#'     + EESTI MAAÜLIKOOL (934)	
+#' * Viljandi maakond	
+#'     + VILJANDI HAIGLA, SIHTASUTUS (849)	
+#'     + VILJANDI AKEN JA UKS, AS (726)	
+#'     + DELUX, OÜ (320)	
+#' 	
+#' 	
+knitr::include_graphics("ex1/numberOfEmployees.png")	
+#' 	
+#' 	
+#' ## Paid Taxes	
+#' 	
+#' * Harju maakond	
+#'     + NESTE EESTI AS (36.881.592,44 )	
+#'     + SOTSIAALKINDLUSTUSAMET (36.052.576,27)	
+#'     + MAARDU TERMINAL, AS (31.825.757,97)	
+#' * Tartu maakond	
+#'     + AS TARTU TERMINAL (23.276.643,85)	
+#'     + A. LE COQ, AS (9.004.464,88)	
+#'     + TARTU ÜLIKOOLI KLIINIKUM, SIHTASUTUS (8.483.292,08)	
+#' * Viljandi maakond	
+#'     + VILJANDI HAIGLA, SIHTASUTUS (1.329.566,90)	
+#'     + VILJANDI AKEN JA UKS, AS (1.209.773,66)	
+#'     + APRICOT OÜ (1.206.013,09)	
+#'   	
+#' 	
+knitr::include_graphics("ex1/taxes.png")	
+#' 	
+#' 	
+#' ## Employment tax paid per employee	
+#' 	
+#' For calculation of this value, a new row was created, dividing the total employment taxes by the number of employees.	
+#' 	
+#' * Harju maakond	
+#'     + SOTSIAALKINDLUSTUSAMET (71714,61)	
+#'     + EESTI HAIGEKASSA (31923,19)	
+#'     + EESTI VÄÄRTPABERIKESKUS, AS (27851,95)	
+#' * Tartu maakond	
+#'     + TARTU LINNAVALITSUS (19109,64)	
+#'     + SKISOSOFT OÜ (15980,12)	
+#'     + GALLUM KOMMERTS, OÜ (12677,73)	
+#' * Viljandi maakond	
+#'     + VILJANDI MAAVALITSUS (56149,41)	
+#'     + FORM A.T., OÜ (27364,58)	
+#'     + ILUTULESTIKU KESKUS ARNIKA, OÜ (15972,29)	
+#' 	
+#' 	
+knitr::include_graphics("ex1/employment.png")	
+#' 	
+#' 	
+#' ## Explanation	
+#' 	
+#' Filtering was done for each of the selected counties. A screenshot of the filter in at least one county was taken. I didn't add one for each county in order to not clutter the report, since it's the same process for each county. Regarding the results, we can see a decent connection between number of employees and the total amount of taxes that the company has to pay. This is especially true for Tartu and Viljandi, in which two out of the three highest paying institutions also have the biggest amount of employees. However, the taxes paid by employee have absolutely no resemblance to the other categories, implying that even though they are the biggest ones, they're not the highest paying institutions.	
+#' 	
+#' # Exercise 2	
+#' 	
+#' ## Number of entities	
+#' 	
+#' 	
+knitr::include_graphics("ex2/numberOfEntities.png")	
+#' 	
+#' 	
+#' I decided to count the number of businesses in each field by the registrikood because, in theory, this code has to be unique. We can see that HULGI- JA JAEKAUBANDUS; MOOTORSOIDUKITE JA MOOTORRATASTE REMONT has the biggest amount of companies, followed by KINNISVARAALANE TEGEVUS and KUTSE-, TEADUS- JA TEHNIKAALANE TEGEVUS. There's more than 4000 companies without a field, which is strange because they should all have a field, even if it's something like "Other" or similar. 	
+#' 	
+#' ## Total paid taxes	
+#' 	
+#' 	
+knitr::include_graphics("ex2/taxes.png")	
+#' 	
+#' 	
+#' In order to make the analysis easier, I added the sum of the paid taxes by percentage as well, to quickly identify the biggest tax payers. Again, HULGI- JA JAEKAUBANDUS; MOOTORSOIDUKITE JA MOOTORRATASTE REMONT comes on top, with businesses there representing almost 30% of the total tax income for the country. However, the next two, TÖÖTLEV TÖÖSTUS and VEONDUS JA LAONDUS are not the same as the order seen in the total amount of business, so they might not be as profitable, even though there are a lot of businesses operating there.	
+#' 	
+#' ## Average number of employees	
+#' 	
+#' 	
+knitr::include_graphics("ex2/averageEmployees.png")	
+#' 	
+#' 	
+#' For the average of employees, AVALIK HALDUS JA RIIGIKAITSE; KOHUSTUSLIK SOTSIAALKINDLUSTUS comes on top, with almost 120 employees on average throughout each of the operation of companies working under this field. Next, MÄETÖÖSTUS and ELEKTRIENERGIA, GAASI, AURU JA KONDITSIONEERITUD OHUGA VARUSTAMINE round up the top 3. Interesting to note is that all of the field have an average of just eight employees per business. KODUMAJAPIDAMISTE KUI TÖÖANDJATE TEGEVUS; KODUMAJAPIDAMISTE OMA TARBEKS MOELDUD ERISTAMATA KAUPAD has an average of only two employees per business.	
+#' 	
+#' ## Average paid employment taxes	
+#' 	
+#' 	
+knitr::include_graphics("ex2/averagePaidEmploymentTaxes.png")	
+#' 	
+#' 	
+#' We can see that the average of taxes paid by employees reaches 10000 euros among all employees, not individually. Considering that the average of employees is 8 per business, an average of 10000 euros of tax means that each employee pays approximately 1250 of taxes every year, which for me, seems like a high amount if this only counts income tax. Companies within AVALIK HALDUS JA RIIGIKAITSE; KOHUSTUSLIK SOTSIAALKINDLUSTUS pay almost half a million of taxes, but that's understandable because this field is the one with the biggest amount of average number of employees. Companies within KODUMAJAPIDAMISTE KUI TÖÖANDJATE TEGEVUS; KODUMAJAPIDAMISTE OMA TARBEKS MOELDUD ERISTAMATA KAUPAD pay only 168.49 of taxes, and considering that the average number of employees within this field is 2, then that means that each employee pays 84.25 of taxes in average, which seems more reasonable than the hipothetical average of 1250 calculated above.	
+#' 	
+#' # Exercise 3	
+#' 	
+#' For this exercise, filtering was done in Excel and all the columns in which Riiklikud Maksud was between 1 million and 2 million were chosen. After that, missing values were replaces with 0,1. Also, the average employee tax column was removed in order to leave only the values provided to us initially.	
+#' 	
+#' 	
+knitr::include_graphics("ex3/subset.png")	
+#' 	
+#' 	
+#' ## K-Means	
+#' 	
+#' 	
+subsetTaxes = read.table("subsetTaxes.csv", header = TRUE, sep = ";", dec = ",")	
+	
+numericValues = data.frame(taxes = subsetTaxes$Riiklikud.Maksud, employmentTaxes = subsetTaxes$Tööjõumaksud.Ja.Maksed, kaive = subsetTaxes$Käive, employees =  subsetTaxes$Töötajate.arv)	
+	
+kmeansResult <- kmeans(numericValues, 4, nstart = nrow(numericValues))	
+kmeansResult$cluster <- as.factor(kmeansResult$cluster)		
+library(ggplot2)		
+	
+ggplot(numericValues, aes(taxes, kaive, color = kmeansResult$cluster)) + geom_point()	
+ggplot(numericValues, aes(employmentTaxes, kaive, color = kmeansResult$cluster)) + geom_point()	
+ggplot(numericValues, aes(kaive, employees, color = kmeansResult$cluster)) + geom_point()	
+#' 	
+#' 	
+#' From these results we can see that k-means with these parameters, we can get several results with different x and y axis that still kind of lets us now how the clustering was performed. What they all have in common is tht they use kaive in some way or another. Trying combinations with other parameters yielded no meaningful results. Kaive vs employees is tricky because, even though we see that there's a structure to it, maybe the clustering should have been done in a different way in order to accomodate the varying amounts of points. The same can be said about taxes vs kaive, in which there's a lot of overlapping of points in the same area.	
+#' 	
+#' 	
+kmeansResult2 <- kmeans(numericValues, 6, nstart = nrow(numericValues))	
+kmeansResult2$cluster <- as.factor(kmeansResult2$cluster)	
+	
+ggplot(numericValues, aes(taxes, kaive, color = kmeansResult2$cluster)) + geom_point()	
+ggplot(numericValues, aes(kaive, employees, color = kmeansResult2$cluster)) + geom_point()	
+#' 	
+#' 	
+#' Here we can see that increasing the amount of clusters does not in fact gives us somewhat better results, since we can clearly see where the line is drawn between clusters, and they are hardly overlapping anymore.	
+#' 	
+#' This is a graph in which taxes and employment taxes were compared with four clusters	
+#' 	
+#' 	
+ggplot(numericValues, aes(taxes, employmentTaxes, color = kmeansResult$cluster)) + geom_point()	
+#' 	
+#' 	
+#' As we can see, there's no meaningful result displayed, since the clustering was probably done in other way.	
+#' 	
+#' ## Hierarchical Clustering	
+#' 	
+#' 	
+dist = dist(numericValues)	
+clust = hclust(dist, method="single")		
+plot(clust)		
+#' 	
+#' 	
+#' Sorry, cluster dendrograms are always ugly. The most meaningful fact bout it is tht almost all of the values can be clustered in one single cluster, and there are a few values that are not close enough to the rest so they're part of two very small clusters that are almost on their own (the two that are to the left).	
+#' 	
+#' 	
+clust = hclust(dist, method="complete")		
+plot(clust)		
+#' 	
+#' 	
+#' For complete linkage, we can see a more evenly distributed graph, with more smaller clusters appearing until we get to the biggest one. However, just as in the simple linkage, there's a very small cluster that gets added to the final one by its own, it's just three values merged directly into the big cluster.	
+#' 	
+#' # Exercise 4	
+#' 	
+#' ## Explanation	
+#' 	
+#' PCA is a technique used against data in order to find the highest variation between data, and thus enables us to reduce dimensions. What it does is that it tries to find the highest amount of variance in the data points. If we have two dimensions, then it tries to find two principal components, and each one should be perpendicular to the other. The first one will account for the highest amount of variation between points, while the second one, perpendicular to it, normally accounts for a very small variation. This second line can be ignored, and thus the first line, is the one that can be used in order to see the data. With this, one or more dimensions can be removed, making it much easier to analyze data that has a lot of dimensions. It is not that useful if we have only two dimensions, but for example, for three dimensions, it allows us to analyze 3D data in a 2D space which is much easier. Important to note is that PCA creates its own scales, so although it displays information that can easily be seen visually, it is still up to the person making the research to interpret what this scale means and how it can be compared to the actual data.	
+#' 	
+#' ## Example	
+#' 	
+#' 	
+knitr::include_graphics("ex4/example.png")	
+#' 	
+#' 	
+#' As we can see from this example, it is almost impossible to try to come up with some kind of analysis regarding the food consumed by different countries when the data is presented in 17 different dimensions, but thanks to PCA, we can get the first principal component and it already has information because it is the one that has captured the highest amount of variance in the data. We can see that Northern Ireland is very far apart from the other three nations. The author analyzed this and concluded that the eating habits of Northern Ireland are different from the rest of the countries because it is an island apart from the others, as opposed to the other three countries which are on the same island.	
+#' 	
+#' Source: Powell, V (2015). Principal Component Analysis explained visually. Retrieved on May 8, 2017, from http://setosa.io/ev/principal-component-analysis/.	
+#' 	
+#' # Exercise 5	
+#' 	
+#' ## Analysis 	
+#' 	
+#' 	
+pca = prcomp(numericValues, center = TRUE, scale. = TRUE)	
+summary(pca)	
+#' 	
+#' 	
+#' In this analysis we can see that, contrary to other examples, the PC1 accounts for less than half of the variance of the data. With PC2 and PC3, we can get 93% of the data covered. Still, with almost half of the data covered by PC1, we can still use it to describe data in a fairly good way.	
+#' 	
+#' Next, PCA will be calculated through the caret library, which lets us process the data with a procedure called BoxCox and scale it so that it displays better results that account for the different measurements that we have (taxes vs employees, for example, since they are not using the same units of measurement).	
+#' 	
+#' 	
+library(caret)	
+library(e1071)	
+#' 	
+#' 	
+dataWithValues = numericValues	
+dataWithValues$name = subsetTaxes$Nimi	
+	
+trans = preProcess(dataWithValues[,1:4], method=c("BoxCox", "center", "scale", "pca"))	
+PC = predict(trans, dataWithValues[,1:4])	
+	
+PC$name = subsetTaxes$Nimi	
+	
+trans$rotation	
+	
+#' 	
+#' 	
+#' With the rotation we can see how each dimension affects the principal component. So, we can see that there's no linear relation between each one. In the first one, when taxes, employment taxes and employees decrease, kaive increases. Some kind of similar permutation can be seen on the rest of the components.	
+#' 	
+#' ## Graphs	
+#' 	
+#' ### PC1-PC2	
+#' 	
+#' 	
+ggplot(PC, aes(PC1, PC2, color = kmeansResult$cluster)) +	
+  geom_point() +	
+  geom_text(aes(label=ifelse(PC2>2 | PC1 < -3.2,as.character(name),'')),hjust=0.5,vjust=-0.5)	
+#' 	
+#' 	
+#' ### PC1-PC3	
+#' 	
+#' 	
+ggplot(PC, aes(PC1, PC3, color = kmeansResult$cluster)) +	
+  geom_point() +	
+  geom_text(aes(label=ifelse(PC3 < -2 | PC1 < -2.5,as.character(name),'')),hjust=0.5,vjust=-0.5)	
+#' 	
+#' 	
+#' #### Explanation for PC1-PC2 and PC1-PC3	
+#' 	
+#' I put them in the same section because they are similar and they display similar issues. The problem with PC1 is that, according to the rotation table, it gives the least amount of weight to kaive, which, as we found on exercise 3, is the one that is more important for the k-means clustering method. This results on PC1 always taking less information from the kaive dimension in order to determine PC1, and thus we can see that the clusters are all over the place.	
+#' 	
+#' ### PC2-PC3	
+#' 	
+#' 	
+ggplot(PC, aes(PC2, PC3, color = kmeansResult$cluster)) +	
+  geom_point() +	
+  geom_text(aes(label=ifelse(PC2 > 1.5 | PC3 < -1.5,as.character(name),'')),hjust=0.5,vjust=-0.5)	
+#' 	
+#' 	
+#' #### Explanation for PC2-PC3	
+#' 	
+#' Contrary to the previous graphs, PC2 and PC3 give kaive the highest and second highest importance in the rotation table. This is immediately reflected in the plot, since we can see a more structured approach and we can infer where the cluster cutoffs occur. However, there are still some values that are not in the "region" where they are supposed to be according to their clusters, but it is much better than the first two.	
+#' 	
+#' #### Analysis about companies	
+#' 	
+#' Interesting to not is that Baltic Agro, Stora Enso Eesti and Tamro Eesti are almost always outliers. Here are the three companies:	
+#' 	
+#' 	
+(subsetTaxesCompanies = subset(subsetTaxes, Nimi == "BALTIC AGRO, AS" | Nimi == "TAMRO EESTI OÜ" | Nimi == "STORA ENSO EESTI AS"))	
+	
+#' 	
+#' 	
+#' After analyzing them on Excel, we can see that the three of them are the highest ones in terms of Käive. Nordecon and Wendre, other companies that are normally far apart from other points as well, round up the top 5. This means that even though PCA gives varying levels of importance to kaive, it is still the most important value among the four of them in regards of deciding clusters and variance for PCA.	
+#' 	
+#' # Exercise 7	
+#' 	
+#' The report can be found here: https://docs.google.com/document/d/1RTAASwbB9Xs_6IKfEtNmDErWQKxld1NPWBTjxurEJW4/edit#heading=h.k2uf3dxko21l		

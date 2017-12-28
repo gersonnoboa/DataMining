@@ -1,0 +1,36 @@
+Visualization: provide visual representations of datasets intended to help people carry out some task more effectively
+Human needs information of the dataset, not automated or hypothesis
+
+data sets might be very different even though mean, etc is the same
+
+many alternatives, not all work, experiments made to determine what works
+
+types of data:
+tabular -> categorical (non implicit order), ordered ordinal (S,M,L) + quantitative (17 inches, 23 inches)
+relational ->
+spatial ->
+
+image theory
+marks and visual channels
+
+visual channel types, what/were (categorical), how much (ordinal, quantitative), grouping (relational, same category)
+
+position is important
+
+channel ranking: encode most important attributes with highest ranked channels
+
+stevens psychophysical power law, color saturation is high, lenght is equal, brightness and area is low
+
+separable channels separability, vs groups 
+
+popout limits, one channel at a time
+
+we don't see good in 3D, up down, sideways, occlusion, complexity, perspective distortion (interferes with size channel), text visibility,
+
+color in 2d better, pixels are the scarcest resource
+
+small multiple example: cerebral, encoding as color
+
+global comparison is difficult in animation
+
+validate against the right threat: problem (	misunderstood their needs), abstraction (showing wrong thing), encoding (the way you show it doesn't work), algorithm (code too slow)

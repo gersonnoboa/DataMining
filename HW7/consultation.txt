@@ -1,0 +1,4 @@
+task 3
+sort ascending
+auc functions built-in
+http://fouryears.eu/2011/10/12/roc-area-under-the-curve-explained/

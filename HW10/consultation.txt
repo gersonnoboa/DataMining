@@ -1,0 +1,5 @@
+1 and 2 manual
+dist function
+
+3
+hierarchical clustering in R

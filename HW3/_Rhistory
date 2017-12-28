@@ -1,0 +1,512 @@
+#geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+vastlakukkelSubset = subset(product, product == "Vastlakukkel")
+ggplot(vastlakukkelSubset, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+subset2014 = subset(product, year == "2014")
+ggplot(subset2014, aes(x=product, y=doy, color=product)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+ggplot(aggregateBananas, aes(x=months, y=product, group=days, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1)
+bananaSubsetdf = data.frame(bananaSubset)
+aggregateBananas = aggregate(bananaSubsetdf$product ~ bananaSubsetdf$months + bananaSubsetdf$days, data = bananaSubsetdf, FUN = length)
+ggplot(aggregateBananas, aes(x=months, y=product, group=days, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1)
+aggregateData = aggregate(productdf$product ~ productdf$shop_id, data = productdf, FUN = length)
+aggregateData
+ggplot(product, aes(x=toString(shop_id), y=time, group=shop_id)) +
+geom_violin()
+ggplot(product, aes(x=toString(shop_id), y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+ggplot(product, aes(y=time, group=shop_id, color=shop_id), aes_string(x=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+?substitute
+?quote
+ggplot(product, aes(x=quote(shop_id), y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+aggregateData["shop_id"] <- toString(aggregateData["shop_id"])
+aggregateData = aggregate(productdf$product ~ productdf$shop_id, data = productdf, FUN = length)
+product["shop_id"] <- toString(product["shop_id"])
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+library(ggplot2)
+klient1 = read.table('klient1.txt', header = FALSE)
+klient3 = read.table('klient3.txt', header = FALSE)
+den1 = density(klient1$V1, kernel = "triangular", adjust = 2)
+plot(den1, col="red")
+den3 = density(klient3$V1, kernel="triangular", adjust = 2)
+lines(den3, col="blue")
+#ex2
+klient1friday = subset(klient1, V1 >= 96 & V1 < 120)
+klient1saturday = subset(klient1, V1 >= 120 & V1 < 144)
+klient3friday = subset(klient3, V1 >= 96 & V1 < 120)
+klient3saturday = subset(klient3, V1 >= 120 & V1 < 144)
+den1friday = density(klient1friday$V1, na.rm = TRUE)
+den1saturday = density(klient1saturday$V1, na.rm = TRUE)
+den3friday = density(klient3friday$V1, na.rm = TRUE)
+den3saturday= density(klient3saturday$V1, na.rm = TRUE)
+plot(den1friday, col="red", type='l', xlim=range(c(100, 145)), ylim = range(c(0.00, 0.35)), main = "Shopping on Friday and Saturday", xlab = "Hours since Monday")
+lines(den1saturday, col="blue", type='l')
+lines(den3friday, col="green")
+lines(den3saturday, col="orange")
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles")
+#ex3
+product = read.table('product_time_shop.txt', header = TRUE, stringsAsFactors = F, sep = ";")
+product
+#ex4
+txt=product$date
+cmb_date=paste(substr(txt,1,4),'-',substr(txt,5,6),'-',substr(txt,7,8),sep='')
+mydates <- as.Date(cmb_date)
+product["weekdays"] <- weekdays(mydates)
+product["months"] <- months(mydates)
+product["days"] <- as.numeric(format(mydates,"%d"))
+product["doy"] <- as.numeric(format(mydates,"%j"))
+product["year"] <- as.numeric(format(mydates,"%Y"))
+product
+#weekdays and months
+#time vs days
+ggplot(product, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+#time vs months
+ggplot(product, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Comparison between time of purchase and months")
+#products
+#time of day vs products on sunday
+sundaySubset = subset(product, weekdays != "domingo")
+productdf = data.frame(product)
+ggplot(sundaySubset, aes(x=product, y=time, color=product)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Products", title = "Comparison between time of purchase and products on Sunday")
+bananaSubset = subset(product, product == "Banana")
+ggplot(bananaSubset, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+vastlakukkelSubset = subset(product, product == "Vastlakukkel")
+ggplot(vastlakukkelSubset, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Vastlakukkel through the months")
+subset2014 = subset(product, year == "2014")
+ggplot(subset2014, aes(x=product, y=doy, color=product)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+#shops
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+?quote
+?ggplot
+product["shop_id"] <- lapply(product["shop_id"], as.character)
+product
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Time of purchase in store")
+subset18 = subset(product, year == "2014" & store == 18)
+subset18 = subset(product, year == "2014" & store_id == "18")
+subset18 = subset(product, year == "2014" & shop_id == "18")
+subset18 = subset(product, year == "2014" & shop_id == "18")
+ggplot(product, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in store")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in store")
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in store")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in store")
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in store")
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Products purchased in stores")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+product["shop_id"] <- lapply(product["shop_id"], as.character)
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Time of purchase in store")
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Time of purchase in store")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+aggregate(product$shop_id ~ product$product, data = product, FUN = length)
+product
+aggregate(product$shop_id ~ product$product, data = product, FUN = length)
+aggregate(productdf$shop_id ~ productdf$product, data = productdf, FUN = length)
+aggregate(productdf$shop_id ~ productdf$product, data = productdf, FUN = length)
+subset18 = subset(product, store_id == 4)
+subset18 = subset(product, shop_id == 4)
+subset18
+as.data.frame(aggregate(productdf$shop_id ~ productdf$product, data = productdf, FUN = length))
+aggregate(productdf$shop_id ~ productdf$product, data = productdf, FUN = length)
+aggregate(subset18$shop_id ~ subset18$product, data = subset18, FUN = length)
+aggregate(shop_id ~ product, data = subset18, FUN = length)
+aggregate(shop_id ~ product, data = productdf, FUN = length)
+aggregate(shop_id ~ product, data = subset21, FUN = length)
+subset21 <- subset(product, shop_id == 21)
+aggregate(shop_id ~ product, data = subset21, FUN = length)
+subset3 <- subset(product, shop_id == 3)
+aggregate(shop_id ~ product, data = subset3, FUN = length)
+subset32 <- subset(product, shop_id == 32)
+aggregate(shop_id ~ product, data = subset32, FUN = length)
+subset4 <- subset(product, shop_id == 4)
+aggregate(shop_id ~ product, data = subset4, FUN = length)
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Products purchased in stores")
+subsetbanana2014 = subset(bananaSubset, year == 2014)
+aggregate(doy ~ product, data = subsetbanana2014, FUN = length)
+aggregate(product ~ doy, data = subsetbanana2014, FUN = length)
+subsetmilk2014 = subset(product, product = "Milk_1", year == 2014)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014 = subset(product, product = "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014 = subset(product, product = "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014 = subset(product, product = "Milk_1", year == 2014)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014 = subset(product, product == "Milk_1", year == 2014)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+product = read.table('product_time_shop.txt', header = TRUE, stringsAsFactors = F, sep = ";")
+subsetmilk2014 = subset(product, product == "Milk_1", year == 2014)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014
+subsetmilk2014
+subsetmilk2014 = subset(product, product == "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN
+subsetmilk2014 = subset(product, product == "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2014
+txt=product$date
+cmb_date=paste(substr(txt,1,4),'-',substr(txt,5,6),'-',substr(txt,7,8),sep='')
+mydates <- as.Date(cmb_date)
+product["weekdays"] <- weekdays(mydates)
+product["months"] <- months(mydates)
+product["days"] <- as.numeric(format(mydates,"%d"))
+product["doy"] <- as.numeric(format(mydates,"%j"))
+product["year"] <- as.numeric(format(mydates,"%Y"))
+subsetmilk2014 = subset(product, product == "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2015 = subset(product, product == "Milk_1", year == 2015)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetmilk2015 = subset(product, product == "Milk_1" & year == 2015)
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+subsetvastlakukkel = subset(product, product == "Vastlakukkel" & year == 2015)
+aggregate(product ~ doy, data = subsetvastlakukkel, FUN = length)
+subsetvastlakukkel = subset(product, product == "Vastlakukkel" & year == 2014)
+aggregate(product ~ doy, data = subsetvastlakukkel, FUN = length)
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Store", title = "Products purchased in stores")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+product["shop_id"] <- lapply(product["shop_id"], as.character)
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Time of purchase in store")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+subset18 = subset(product, year == "2014")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+subset18 = subset(product, year == "2014", shop_id == 18)
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+subset18 = subset(product, year == "2014" & store_id == 18)
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+product
+subset18 = subset(product, year == "2014" & shop_id == 18)
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+subsetvastlakukkel = subset(product, product == "Vastlakukkel" & year == 2014)
+aggregate(product ~ doy, data = subsetvastlakukkel, FUN = length)
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Days of purchase in all stores")
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Time", x = "Product", title = "Products purchased in stores")
+plot(den1, col="red", xla)
+plot(den1, col="red")
+lines(den3, col="blue")
+plot(den3, col="blue")
+legend('topright', c("Klient1", "Klient3") , lty=1, col=c('red', 'blue'), bty='n', cex=.75)
+legend('topright', c("Klient1 Friday", "Klient1 Saturday", "Klient3 Friday", "Klient3 Saturday") , lty=1, col=c('red', 'blue', 'green', 'orange'), bty='n', cex=.75)
+plot(den1friday, col="red", type='l', xlim=range(c(100, 145)), ylim = range(c(0.00, 0.35)), main = "Shopping on Friday and Saturday", xlab = "Hours since Monday")
+lines(den1saturday, col="blue", type='l')
+lines(den3friday, col="green")
+lines(den3saturday, col="orange")
+legend('topright', c("Klient1 Friday", "Klient1 Saturday", "Klient3 Friday", "Klient3 Saturday") , lty=1, col=c('red', 'blue', 'green', 'orange'), bty='n', cex=.75)
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles")
+ggplot(product, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles") +
+scale_colour_manual(values=c("red","green","blue"))
+ggplot(data=klient1friday, aes(sample=V1), color=klient1friday) +
+geom_qq(fill="blue") +
+geom_qq(data=klient3friday, aes(sample=V1)) +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles") +
+scale_colour_manual(values=c("red","green","blue"))
+?scale_Color_manual
+scale_colour_manual(c("1", "2", "3"), values=c("red","green","blue"))
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles") +
+scale_colour_manual(c("1", "2", "3"), values=c("red","green","blue"))
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles") +
+scale_colour_manual(breaks=c("1", "2", "3"), values=c("red","green","blue"))
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between two clients on a Friday", y="Hours", x = "Quantiles")
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between Klient1 (red) and Klient3 (blue) on a Friday", y="Hours", x = "Quantiles")
+product
+aggregate(shop_id ~ product, data = subset3, FUN = length)
+setNames(aggregate(shop_id ~ product, data = productdf, FUN = length), c("Product", "Amount"))
+setNames(aggregate(shop_id ~ product, data = productdf, FUN = length), c("Product", "Amount"))
+subset18 <- subset(product, shop_id == 18)
+setNames(aggregate(shop_id ~ product, data = subset18, FUN = length), c("Product", "Amount"))
+subset21 <- subset(product, shop_id == 21)
+setNames(aggregate(shop_id ~ product, data = subset21, FUN = length), c("Product", "Amount"))
+subset3 <- subset(product, shop_id == 3)
+setNames(aggregate(shop_id ~ product, data = subset3, FUN = length), c("Product", "Amount"))
+subset32 <- subset(product, shop_id == 32)
+setNames(aggregate(shop_id ~ product, data = subset32, FUN = length), c("Product", "Amount"))
+subset4 <- subset(product, shop_id == 4)
+setNames(aggregate(shop_id ~ product, data = subset4, FUN = length), c("Product", "Amount"))
+unique(product$year)
+subsetmilk2015 = subset(product, product == "Milk_1" & year == 2015)
+aggregate(product ~ doy, data = subsetmilk2015, FUN = length)
+subsetmilk2015 = subset(product, product == "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2015, FUN = length)
+subsetmilk2014 = subset(product, product == "Milk_1")
+aggregate(product ~ doy, data = subsetmilk2014, FUN = length)
+unique(mydates)
+unique(months)
+unique(product$months)
+ggplot(product, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+ggplot(product, aes(x=weekdays, y=product, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+bananaSubset = subset(product, product == "Banana")
+ggplot(bananaSubset, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+nanaSubset = subset(product, product == "Banana")
+ggplot(bananaSubset, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase of bananas and weekdays")
+ggplot(product, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+suggplot(product, aes(x=product, y=doy, color=product)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Products bought throughout the year")
+ggplot(product, aes(x=product, y=doy, color=product)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Products bought throughout the year")
+summary(product)
+library(ggplot2)
+klient1 = read.table('klient1.txt', header = FALSE)
+klient3 = read.table('klient3.txt', header = FALSE)
+den1 = density(klient1$V1, kernel = "triangular", adjust = 2)
+plot(den1, col="red", xlab="Time since Monday", main="Comparison of clients")
+den3 = density(klient3$V1, kernel="triangular", adjust = 2)
+lines(den3, col="blue")
+legend('topright', c("Klient1", "Klient3") , lty=1, col=c('red', 'blue'), bty='n', cex=.75)
+#ex2
+klient1friday = subset(klient1, V1 >= 96 & V1 < 120)
+klient1saturday = subset(klient1, V1 >= 120 & V1 < 144)
+klient3friday = subset(klient3, V1 >= 96 & V1 < 120)
+klient3saturday = subset(klient3, V1 >= 120 & V1 < 144)
+den1friday = density(klient1friday$V1, na.rm = TRUE)
+den1saturday = density(klient1saturday$V1, na.rm = TRUE)
+den3friday = density(klient3friday$V1, na.rm = TRUE)
+den3saturday= density(klient3saturday$V1, na.rm = TRUE)
+plot(den1friday, col="red", type='l', xlim=range(c(100, 145)), ylim = range(c(0.00, 0.35)), main = "Shopping on Friday and Saturday", xlab = "Hours since Monday")
+lines(den1saturday, col="blue", type='l')
+lines(den3friday, col="green")
+lines(den3saturday, col="orange")
+legend('topright', c("Klient1 Friday", "Klient1 Saturday", "Klient3 Friday", "Klient3 Saturday") , lty=1, col=c('red', 'blue', 'green', 'orange'), bty='n', cex=.75)
+ggplot(data=klient1friday, aes(sample=V1)) +
+geom_qq(fill="blue", color="blue") +
+geom_qq(data=klient3friday, aes(sample=V1), color="red") +
+labs("title" = "Comparison between Klient1 (red) and Klient3 (blue) on a Friday", y="Hours", x = "Quantiles")
+#ex3
+product = read.table('product_time_shop.txt', header = TRUE, stringsAsFactors = F, sep = ";")
+productdf = data.frame(product)
+setNames(aggregate(shop_id ~ product, data = productdf, FUN = length), c("Product on all shops", "Amount"))
+subset18 <- subset(product, shop_id == 18)
+setNames(aggregate(shop_id ~ product, data = subset18, FUN = length), c("Product on Shop 18", "Amount"))
+subset21 <- subset(product, shop_id == 21)
+setNames(aggregate(shop_id ~ product, data = subset21, FUN = length), c("Product on Shop 21", "Amount"))
+subset3 <- subset(product, shop_id == 3)
+setNames(aggregate(shop_id ~ product, data = subset3, FUN = length), c("Product on Shop 3", "Amount"))
+subset32 <- subset(product, shop_id == 32)
+setNames(aggregate(shop_id ~ product, data = subset32, FUN = length), c("Product on Shop 32", "Amount"))
+subset4 <- subset(product, shop_id == 4)
+setNames(aggregate(shop_id ~ product, data = subset4, FUN = length), c("Product on Shop 4", "Amount"))
+txt=product$date
+cmb_date=paste(substr(txt,1,4),'-',substr(txt,5,6),'-',substr(txt,7,8),sep='')
+mydates <- as.Date(cmb_date)
+product["weekdays"] <- weekdays(mydates)
+product["months"] <- months(mydates)
+product["days"] <- as.numeric(format(mydates,"%d"))
+product["doy"] <- as.numeric(format(mydates,"%j"))
+product["year"] <- as.numeric(format(mydates,"%Y"))
+print("Dates covered")
+unique(mydates)
+print("Years covered")
+unique(product$year)
+print("Months covered")
+unique(product$months)
+#weekdays
+#time vs days
+ggplot(product, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase and weekdays")
+bananaSubset = subset(product, product == "Banana")
+ggplot(bananaSubset, aes(x=weekdays, y=time, color=weekdays)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Days of the week", title = "Comparison between time of purchase of bananas and weekdays")
+#products
+#time of day vs products on sunday
+sundaySubset = subset(product, weekdays != "domingo")
+ggplot(sundaySubset, aes(x=product, y=time, color=product)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Products", title = "Comparison between time of purchase and products on Sunday") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(bananaSubset, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Bananas through the months")
+vastlakukkelSubset = subset(product, product == "Vastlakukkel")
+ggplot(vastlakukkelSubset, aes(x=months, y=time, color=months)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Months", title = "Vastlakukkel through the months")
+ggplot(product, aes(x=product, y=doy, color=product)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+labs(y="Day of the year", x = "Months", title = "Products bought throughout the year") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+#shops
+product["shop_id"] <- lapply(product["shop_id"], as.character)
+ggplot(product, aes(x=shop_id, y=time, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Time", x = "Store", title = "Time of purchase in store")
+ggplot(product, aes(x=shop_id, y=doy, group=shop_id, color=shop_id)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+labs(y="Day of the year", x = "Store", title = "Days of purchase in all stores")
+subset18 = subset(product, year == "2014" & shop_id == 18)
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Day of the year", x = "Product", title = "Products purchased in store 18, analyzed by day of the year") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+#ex 5
+ggplot(subset18, aes(x=product, y=doy, group=product, color=product)) +
+geom_violin() +
+labs(y="Day of the year", x = "Product", title = "Products purchased in store 18, analyzed by day of the year") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+print("Bananas sold")
+subsetbanana2014 = subset(bananaSubset, year == 2014)
+setNames(aggregate(product ~ doy, data = subsetbanana2014, FUN = length), c("Day of year", "Bananas sold"))
+print("Milk type 1 sold")
+subsetmilk2014 = subset(product, product == "Milk_1")
+setNames(aggregate(product ~ doy, data = subsetmilk2014, FUN = length), c("Day of year", "Milk type 1 sold"))
+print("Vastlakukkel sold")
+subsetvastlakukkel = subset(product, product == "Vastlakukkel" & year == 2014)
+setNames(aggregate(product ~ doy, data = subsetvastlakukkel, FUN = length), c("Day of year", "Vastlakukkel sold"))

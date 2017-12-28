@@ -1,0 +1,512 @@
+xlab("Gender") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between genders")
+dat2 <- data.frame(
+countries = finaldf$countriesClean.native.country,
+values = finaldf$countriesClean.salaries
+)
+dat2 <- data.frame(
+countries = finaldf$countriesClean.native.country,
+values = finaldf$countriesClean.salaries
+)
+dat2
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`
+values = finaldf$`df$countriesClean.salaries`
+)
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`,
+values = finaldf$`df$countriesClean.salaries`
+)
+dat2
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Gender") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between genders")
+countriesClean <- subset(adult, !is.na(native.country))
+df <- data.frame(countriesClean$native.country, countriesClean$salaries)
+aggr <- aggregate(df$countriesClean.salaries ~ df$countriesClean.native.country, data = df, mean)
+aggr2 <- aggr[order(aggr[,2], decreasing = TRUE), , drop = FALSE]
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`,
+values = finaldf$`df$countriesClean.salaries`
+)
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Gender") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between genders")
+countriesClean <- subset(adult, !is.na(native.country))
+df <- data.frame(countriesClean$native.country, countriesClean$salaries)
+aggr <- aggregate(df$countriesClean.salaries ~ df$countriesClean.native.country, data = df, mean)
+aggr2 <- aggr[order(aggr[,2], decreasing = TRUE), , drop = FALSE]
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`,
+values = finaldf$`df$countriesClean.salaries`
+)
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countrues")
+dat2
+dat2$countries <- factor(dat2$countries, levels = dat$countries[order(dat2$values)])
+dat2$countries <- factor(dat2$countries, levels = dat2$countries[order(dat2$values)])
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countrues")
+dat2$countries <- factor(dat2$countries, levels = dat2$countries[order(dat2$values, decreasing = TRUE)])
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countrues")
+occClean <- subset(adult, !is.na(occupation))
+df3 <- data.frame(occClean$occupation, occClean$salaries)
+aggr <- aggregate(df3$occClean.salaries ~ df$occClean.occupation, data = df3, mean)
+aggr <- aggregate(df3$occClean.salaries ~ df3$occClean.occupation, data = df3, mean)
+aggrG3F <- aggrG3[order(aggrG3[,2], decreasing = TRUE), , drop = FALSE]
+aggrG3 <- aggregate(df3$occClean.salaries ~ df3$occClean.occupation, data = df3, mean)
+aggrG3F <- aggrG3[order(aggrG3[,2], decreasing = TRUE), , drop = FALSE]
+finaldfG3 = head(aggrG3F, 10)
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldf$`df$countriesClean.salaries`
+)
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldf$`df$countriesClean.salaries`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldfG3$`df3$occClean.salaries`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+finaldfG3 = aggrG3F
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldfG3$`df3$occClean.salaries`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+occClean <- subset(adult, !is.na(occupation) | is.na(age))
+occClean <- subset(adult, !is.na(occupation) | is.na(age))
+df3 <- data.frame(occClean$occupation, occClean$age)
+aggrG3 <- aggregate(df3$occClean.age ~ df3$occClean.occupation, data = df3, mean)
+aggrG3F <- aggrG3[order(aggrG3[,2], decreasing = TRUE), , drop = FALSE]
+finaldfG3 = aggrG3F
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldfG3$`df3$occClean.age`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+dat3$occupation
+dat3
+adult = read.table('adult-csv.csv', header = T, stringsAsFactors = F, sep = ",")
+#HW2
+#age
+age = adult$age
+#mean
+mean(age, na.rm=TRUE)
+#median
+median(age, na.rm=TRUE)
+#max
+max(age, na.rm = TRUE)
+#min
+min(age, na.rm = TRUE)
+#sd
+sd(age, na.rm = TRUE)
+#frequency table
+cbind(freq=table(age))
+#missing values
+sum(is.na(age))
+#plot
+plot(density(age, na.rm = TRUE), xlab="Age", main = "Age Distribution")
+#workclass
+workclass = adult$workclass
+#median
+paste("Median:", median(workclass, na.rm=TRUE))
+#max
+paste("Max: ", max(workclass, na.rm = TRUE))
+#min
+paste("Min ", min(workclass, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(workclass))
+#missing values
+paste("Missing values: ", sum(is.na(workclass)))
+#plot
+barplot(table(workclass), main="Workclass Distribution", xlab="Workclass", ylab="Number of people", las=3)
+#education
+education = adult$education
+#median
+paste("Median: ", median(education, na.rm=TRUE))
+#max
+paste("Max: ", max(education, na.rm = TRUE))
+#min
+paste("Min: ", min(education, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(education))
+#missing values
+paste("Missing values: ", sum(is.na(education)))
+#plot
+barplot(table(education), main="Education Distribution", xlab="Education", ylab="Number of people", las=3)
+#occupation
+occupation = adult$occupation
+#max
+paste("Max:", max(occupation, na.rm = TRUE))
+#min
+paste("Min:", min(occupation, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(occupation))
+#missing values
+paste("Missing values:", sum(is.na(education)))
+#plot
+barplot(table(occupation), main="Occupation Distribution", xlab="Occupation", ylab="Number of people", las=3)
+#capital.gain
+capital.gain = adult$capital.gain
+#mean
+paste("Mean:", mean(capital.gain, na.rm=TRUE))
+#median
+paste("Median:", median(capital.gain, na.rm=TRUE))
+#max
+paste("Max:", max(capital.gain, na.rm = TRUE))
+#min
+paste("Min:", min(capital.gain, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(capital.gain, na.rm = TRUE))
+#missing values
+paste("Missing values:", sum(is.na(capital.gain)))
+#plot
+plot(density(capital.gain, na.rm = TRUE), xlab="Capital Gain", main = "Capital Gain Distribution")
+#capital.loss
+capital.loss = adult$capital.loss
+#mean
+paste("Mean:", mean(capital.loss, na.rm=TRUE))
+#median
+paste("Median:", median(capital.loss, na.rm=TRUE))
+#max
+paste("Max:", max(capital.loss, na.rm = TRUE))
+#min
+paste("Min:", min(capital.loss, na.rm = TRUE))
+#sd
+paste("Standard deviation", sd(capital.loss, na.rm = TRUE))
+#missing values
+paste("Missing values:", sum(is.na(capital.loss)))
+#plot
+plot(density(capital.loss, na.rm = TRUE), xlab="Capital Loss", main = "Capital Loss Distribution")
+#native.country
+native.country = adult$native.country
+#max
+max(native.country, na.rm = TRUE)
+#min
+min(native.country, na.rm = TRUE)
+#frequency table
+print("Frequency table")
+cbind(freq=table(native.country))
+#missing values
+paste("Missing values:", sum(is.na(native.country)))
+#plot
+barplot(table(native.country), main="Country Distribution", xlab="Country", ylab="Number of people", las=3)
+#salaries
+salaries = adult$salaries
+#mean
+paste("Mean:", mean(salaries, na.rm=TRUE))
+#median
+paste("Median:", median(salaries, na.rm=TRUE))
+#max
+paste("Max:", max(salaries, na.rm = TRUE))
+#min
+paste("Min:", min(salaries, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(salaries, na.rm = TRUE))
+#missing values
+paste("Missing values:", sum(is.na(salaries)))
+#plot
+plot(density(salaries, na.rm = TRUE), xlab="Salaries", main = "Salaries Distribution")
+#jobsatisfaction
+jobsatisfaction = adult$jobsatisfaction
+#mean
+paste("Mean:", mean(jobsatisfaction, na.rm=TRUE))
+#median
+paste("Median:", median(jobsatisfaction, na.rm=TRUE))
+#max
+paste("Max:", max(jobsatisfaction, na.rm = TRUE))
+#min
+paste("Min:", min(jobsatisfaction, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(jobsatisfaction, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(jobsatisfaction))
+#missing values
+paste("Missing values:", sum(is.na(jobsatisfaction)))
+#plot
+plot(density(jobsatisfaction, na.rm = TRUE), xlab="Job Satisfaction", main = "Job Satisfaction Distribution")
+#male
+male = adult$male
+#mean
+paste("Mean:", mean(male, na.rm=TRUE))
+#median
+paste("Median:", median(male, na.rm=TRUE))
+#max
+paste("Max:", max(male, na.rm = TRUE))
+#min
+paste("Min:", min(male, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(male, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(male))
+#missing values
+paste("Missing values:", sum(is.na(male)))
+#plot
+plot(density(male, na.rm = TRUE), xlab="Male", main = "Male Distribution")
+#female
+female = adult$female
+#mean
+paste("Mean:", mean(female, na.rm=TRUE))
+#median
+paste("Median:", median(female, na.rm=TRUE))
+#max
+paste("Max:", max(female, na.rm = TRUE))
+#min
+paste("Min:", min(female, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(female, na.rm = TRUE))
+#frequency table
+print("Frequency table")
+cbind(freq=table(female))
+#missing values
+paste("Missing values:", sum(is.na(female)))
+#plot
+plot(density(female, na.rm = TRUE), xlab="Female", main = "Female Distribution")
+#exercise 3
+#age
+paste("IQR:", IQR(age, na.rm = TRUE))
+paste("Upper limit:", quantile(age, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(age, 0.25, na.rm = TRUE) / 1.5)
+#capital.gain
+paste("IQR:", IQR(capital.gain, na.rm = TRUE))
+paste("Upper limit:", quantile(capital.gain, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(capital.gain, 0.25, na.rm = TRUE) / 1.5)
+#capital.loss
+paste("IQR:", IQR(capital.loss, na.rm = TRUE))
+paste("Upper limit:", quantile(capital.loss, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(capital.loss, 0.25, na.rm = TRUE) / 1.5)
+#salaries
+paste("IQR:", IQR(salaries, na.rm = TRUE))
+paste("Upper limit:", quantile(salaries, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(salaries, 0.25, na.rm = TRUE) / 1.5)
+#new salary with removed values
+salaries2 = adult[adult$salaries > 127 & salaries < 99999, ]$salaries
+#mean
+paste("Mean:", mean(salaries2, na.rm=TRUE))
+#median
+paste("Median:", median(salaries2, na.rm=TRUE))
+#max
+paste("Max:", max(salaries2, na.rm = TRUE))
+#min
+paste("Min:", min(salaries2, na.rm = TRUE))
+#sd
+paste("Standard deviation:", sd(salaries2, na.rm = TRUE))
+#missing values
+paste("Missing values:", sum(is.na(salaries2)))
+#plot
+plot(density(salaries2, na.rm = TRUE), xlab="Salaries", main = "Salaries Distribution")
+#jobsatisfaction
+paste("IQR:", IQR(jobsatisfaction, na.rm = TRUE))
+paste("Upper limit:", quantile(jobsatisfaction, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(jobsatisfaction, 0.25, na.rm = TRUE) / 1.5)
+#male
+paste("IQR:", IQR(male, na.rm = TRUE))
+paste("Upper limit:", quantile(male, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(male, 0.25, na.rm = TRUE) / 1.5)
+#female
+paste("IQR:", IQR(female, na.rm = TRUE))
+paste("Upper limit:", quantile(female, 0.75, na.rm = TRUE) * 1.5)
+paste("Lower limit:", quantile(female, 0.25, na.rm = TRUE) / 1.5)
+#age missing values
+mean(subset(adult, education == ' Doctorate')$age, na.rm = TRUE)
+age2 = adult$age
+age2[is.na(age2)] <- 48
+#repetition of calculations
+#mean
+mean(age2, na.rm=TRUE)
+#median
+median(age2, na.rm=TRUE)
+#max
+max(age2, na.rm = TRUE)
+#min
+min(age2, na.rm = TRUE)
+#sd
+sd(age2, na.rm = TRUE)
+#frequency table
+cbind(freq=table(age2))
+#missing values
+sum(is.na(age2))
+#plot
+plot(density(age, na.rm = TRUE), xlab="Age", main = "Age Distribution")
+lines (density(age2), col="red")
+legend('topright', c("Age with NA", "Age without NA") , lty=1, col=c('black', 'red'), bty='n', cex=.75)
+#exercise 4
+mean(subset(adult, education == ' Doctorate')$age, na.rm = TRUE)
+#repetition of calculations
+age2 = adult$age
+age2[is.na(age2)] <- 48
+#mean
+mean(age2, na.rm=TRUE)
+#median
+median(age2, na.rm=TRUE)
+#max
+max(age2, na.rm = TRUE)
+#min
+min(age2, na.rm = TRUE)
+#sd
+sd(age2, na.rm = TRUE)
+#frequency table
+cbind(freq=table(age2))
+#missing values
+sum(is.na(age2))
+#plot
+plot(density(age, na.rm = TRUE), xlab="Age", main = "Age Distribution")
+lines (density(age2), col="red")
+legend('topright', c("Age with NA", "Age without NA") , lty=1, col=c('black', 'red'), bty='n', cex=.75)
+#exercise 5
+library(ggplot2)
+#graph 1
+maleData = adult[adult$male == 1, ]$salaries
+maleMean = mean(maleData, na.rm = TRUE)
+femaleData = adult[adult$female == 1, ]$salaries
+femaleMean = mean(femaleData, na.rm = TRUE)
+dat <- data.frame(
+averages = c("Male", "Female"),
+values = c(maleMean, femaleMean)
+)
+ggplot(data = dat, aes(x=dat$averages, y=dat$values), fill=dat$averages) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Gender") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between genders")
+#graph 2
+countriesClean <- subset(adult, !is.na(native.country))
+df <- data.frame(countriesClean$native.country, countriesClean$salaries)
+aggr <- aggregate(df$countriesClean.salaries ~ df$countriesClean.native.country, data = df, mean)
+aggr2 <- aggr[order(aggr[,2], decreasing = TRUE), , drop = FALSE]
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`,
+values = finaldf$`df$countriesClean.salaries`
+)
+dat2$countries <- factor(dat2$countries, levels = dat2$countries[order(dat2$values, decreasing = TRUE)])
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+#graph 3
+occClean <- subset(adult, !is.na(occupation) | is.na(age))
+df3 <- data.frame(occClean$occupation, occClean$age)
+aggrG3 <- aggregate(df3$occClean.age ~ df3$occClean.occupation, data = df3, mean)
+aggrG3F <- aggrG3[order(aggrG3[,2], decreasing = TRUE), , drop = FALSE]
+finaldfG3 = aggrG3F
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldfG3$`df3$occClean.age`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Occupation") + ylab("Average of age") +
+guides(fill=TRUE) +
+ggtitle("Average of age between occupations") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+maleData = adult[adult$male == 1, ]$salaries
+maleMean = mean(maleData, na.rm = TRUE)
+femaleData = adult[adult$female == 1, ]$salaries
+femaleMean = mean(femaleData, na.rm = TRUE)
+dat <- data.frame(
+averages = c("Male", "Female"),
+values = c(maleMean, femaleMean)
+)
+ggplot(data = dat, aes(x=dat$averages, y=dat$values), fill=dat$averages) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Gender") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between genders")
+countriesClean <- subset(adult, !is.na(native.country))
+df <- data.frame(countriesClean$native.country, countriesClean$salaries)
+aggr <- aggregate(df$countriesClean.salaries ~ df$countriesClean.native.country, data = df, mean)
+aggr2 <- aggr[order(aggr[,2], decreasing = TRUE), , drop = FALSE]
+finaldf = head(aggr2, 10)
+dat2 <- data.frame(
+countries = finaldf$`df$countriesClean.native.country`,
+values = finaldf$`df$countriesClean.salaries`
+)
+dat2$countries <- factor(dat2$countries, levels = dat2$countries[order(dat2$values, decreasing = TRUE)])
+ggplot(data = dat2, aes(x=dat2$countries, y=dat2$values), fill=dat2$countries) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Country") + ylab("Average of salary") +
+guides(fill=TRUE) +
+ggtitle("Average of salary between countries")
+occClean <- subset(adult, !is.na(occupation) | is.na(age))
+df3 <- data.frame(occClean$occupation, occClean$age)
+aggrG3 <- aggregate(df3$occClean.age ~ df3$occClean.occupation, data = df3, mean)
+aggrG3F <- aggrG3[order(aggrG3[,2], decreasing = TRUE), , drop = FALSE]
+finaldfG3 = aggrG3F
+dat3 <- data.frame(
+occupation = finaldfG3$`df3$occClean.occupation`,
+values = finaldfG3$`df3$occClean.age`
+)
+dat3$occupation <- factor(dat3$occupation, levels = dat3$occupation[order(dat3$values, decreasing = TRUE)])
+ggplot(data = dat3, aes(x=dat3$occupation, y=dat3$values), fill=dat3$occupation) +
+geom_bar(stat="identity", colour="black", fill="#bbbbbb") +
+xlab("Occupation") + ylab("Average of age") +
+guides(fill=TRUE) +
+ggtitle("Average of age between occupations") +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))

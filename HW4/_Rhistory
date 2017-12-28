@@ -1,0 +1,512 @@
+rownames(dataset) <- c("Count")
+as.table(dataset)
+datasetTwo = matrix(c(5,6,6,4,3,5,5,4,3,8,6,6,8,6,3), ncol = 15)
+colnames(datasetTwo) <- c("AC", "AD", "AF", "AG", "AH", "CD", "CF", "CG", "CH", "DF", "DG", "DH", "FG", "FH", "GH")
+rownames(datasetTwo) <- c("Count")
+as.table(datasetTwo)
+datasetThree = matrix(c(4,3,4,3,4,6,4,2,3), ncol = 9)
+colnames(datasetThree) <- c("ACD", "ACF", "ADF", "CDF", "DFH", "DFG", "DFH", "DGH", "FGH")
+rownames(datasetThree) <- c("Count")
+as.table(datasetThree)
+df
+n = c(2, 3, 5)
+s = c("aa", "bb", "cc")
+b = c(TRUE, FALSE, TRUE)
+df = data.frame(n, s, b)
+df
+a = c(0,0,1)
+b = c(1,0,0)
+c = c(0,1,0)
+d = c(1,1,1)
+df = data.frame(a,b,c,d)
+df
+library(arules)
+apriori(df)
+a = c("0","0","1")
+b = c("1","0","0")
+c = c("0","1","0")
+d = c("1","1","1")
+df = data.frame(a,b,c,d)
+df
+library(arules)
+apriori(df)
+inspect(apriori(df))
+a = c("0","0","1","1","1","0","1","1","1","0","1","0","0","0","1")
+b = c("1","0","0","1","0","0","1","0","0","0","0","1","0","0","0")
+c = c("0","1","0","1","1","0","0","0","1","0","1","0","0","1","1")
+d = c("1","1","1","1","0","1","0","1","1","1","1","0","1","0","1")
+e = c("0","0","0","0","0","0","1","0","0","0","1","1","0","0","0")
+f = c("1","1","1","0","1","0","1","1","1","1","0","1","1","1","1")
+g = c("0","1","1","0","1","0","0","1","1","1","0","0","1","1","0")
+h = c("1","0","0","1","0","1","0","1","0","1","0","1","0","1","1")
+df = data.frame(a,b,c,d,f,g,h)
+df
+df = data.frame(a,b,c,d,e,f,g,h)
+df
+library(arules)
+inspect(apriori(df))
+inspect(apriori(df))
+library(arules)
+aprioriRules = apriori(df)
+aprioriRules = apriori(df)
+inspect(aprioriRules)
+plot(rules, shading="order", control=list(main ="Two-key plot"));
+plot(aprioriRules, shading="order", control=list(main ="Two-key plot"));
+plot(aprioriRules);
+plot(subrules2, method="graph");
+subrules2 = head(sort(rules, by="support"), 30);
+plot(subrules2, method="graph");
+subrules2 = head(sort(aprioriRules, by="support"), 30);
+plot(subrules2, method="graph");
+plot(subrules2, method="paracoord");
+ggplot(aprioriRules,aes(x=support)) +
+geom_density()
+plot(density(subrules2))
+subrules2
+inspect(subrules2)
+subrules2 = head(sort(aprioriRules, by="confidence"), 30);
+inspect(subrules2)
+subrules2 = head(sort(aprioriRules, by="confidence"), 50);
+inspect(subrules2)
+plot(subrules2)
+plot(subrules2, method="grouped");
+plot(subrules2, method="matrix");
+plot(subrules2, method="matrix", measure="confidence");
+plot(subrules2, method="matrix", measure="lift");
+plot(subrules2, method="matrix");
+inspect(subrules2)
+subrules2 = head(sort(aprioriRules, by="lhs"), 50);
+subrules2 = head(sort(aprioriRules, by="confidence"), 50);
+subrules2 = head(sort(aprioriRules, by="lhs"), 50);
+subrules2 = head(sort(aprioriRules, by="rhs"), 50);
+subrules2 = head(sort(aprioriRules, by="support"), 50);
+subrules2 = head(sort(aprioriRules, by="confidence"), 50);
+subrules2 = head(sort(aprioriRules, by="confidence"), 50);
+inspect(subrules2)
+itemFrequencyPlot(subrules2, support = 0.1, cex.names=0.8);
+itemFrequencyPlot(aprioriRules, support = 0.1, cex.names=0.8);
+itemFrequencyPlot(df, support = 0.1, cex.names=0.8);
+inspect(subrules2)
+plot(subrules2, method="matrix");
+inspect(subrules2)
+rules_info <-
+data.frame(
+LHS = labels(lhs(subrules2)),
+RHS = labels(rhs(subrules2)),
+quality(subrules2)
+)
+rules_info[order(rules_info$LHS)]
+rules_info <-
+data.frame(
+LHS = labels(lhs(aprioriRules)),
+RHS = labels(rhs(aprioriRules)),
+quality(aprioriRules)
+)
+rules_info[order(rules_info$LHS)]
+rules_info[order(rules_info$LHS),]
+library(arules)
+aprioriRules = apriori(df)
+#subrules2 = head(sort(aprioriRules, by="confidence"), 50);
+rulesInfo[order(rulesInfo$LHS),]
+rulesInfo <-
+data.frame(
+LHS = labels(lhs(aprioriRules)),
+RHS = labels(rhs(aprioriRules)),
+quality(aprioriRules)
+)
+rulesInfo[order(rulesInfo$LHS),]
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1")))
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "lhs"))
+inspect(aprioriRules)
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "lhs"))
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "lhs"))
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules)
+inspect(aprioriRules)
+aprioriRules2 = apriori(df, appearance = list(lhs=c("a=1", "c=1", "d=1"), default = "rhs"))
+inspect(aprioriRules2)
+a = c("NA","NA","1","1","1","NA","1","1","1","NA","1","NA","NA","NA","1")
+b = c("1","NA","NA","1","NA","NA","1","NA","NA","NA","NA","1","NA","NA","NA")
+c = c("NA","1","NA","1","1","NA","NA","NA","1","NA","1","NA","NA","1","1")
+d = c("1","1","1","1","NA","1","NA","1","1","1","1","NA","1","NA","1")
+e = c("NA","NA","NA","NA","NA","NA","1","NA","NA","NA","1","1","NA","NA","NA")
+f = c("1","1","1","NA","1","NA","1","1","1","1","NA","1","1","1","1")
+g = c("NA","1","1","NA","1","NA","NA","1","1","1","NA","NA","1","1","NA")
+h = c("1","NA","NA","1","NA","1","NA","1","NA","1","NA","1","NA","1","1")
+df = data.frame(a,b,c,d,e,f,g,h)
+df
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"), na.rm = TRUE)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"), na.action =na.exclude)
+?apriori
+inspect(aprioriRules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"), na.omit)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"), na.omit=TRUE)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules)
+inspect(aprioriRules2)
+aprioriRules2 = apriori(df, appearance = list(lhs=c("a=1", "c=1", "d=1"), default = "rhs"))
+inspect(aprioriRules2)
+aprioriRules2 = apriori(df, appearance = list(lhs=c("f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules2)
+supportDFG = 6/15
+supportDFG = 6/15
+confidenceDFG = 6/8
+totalItems = 15
+totalSupportDFG = 6
+totalSupportDF = 8
+totalSupportG = 8
+supportDFG = totalSupportDFG/totalItems
+print("Support DFG: " + supportDFG)
+supportDFG = totalSupportDFG/totalItems
+print("Support DFG")
+supportDFG
+print("Lift {DF} -> {G}")
+totalSupportDFG/(totalSupportDF * totalSupportG)
+print("Support DFG")
+totalSupportDFG/totalItems
+print("Confidence {DF} -> {G}")
+totalSupportDF/totalSupportDFG
+print("Lift {DF} -> {G}")
+totalSupportDFG/(totalSupportDF * totalSupportG)
+totalSupportDFG/totalSupportDF
+print("Support DFG")
+totalSupportDFG/totalItems
+print("Confidence {DF} -> {G}")
+totalSupportDFG/totalSupportDF
+print("Lift {DF} -> {G}")
+totalSupportDFG/(totalSupportDF * totalSupportG)
+(totalSupportDFG/totalItems)/((totalSupportDF/totalItems) * (totalSupportG/totalItems))
+print("Lift {DF} -> {G}")
+(totalSupportDFG/totalItems)/((totalSupportDF/totalItems) * (totalSupportG/totalItems))
+print("Support DFG")
+totalSupportDFG/totalItems
+print("Confidence {DF} -> {G}")
+totalSupportDFG/totalSupportDF
+print("Lift {DF} -> {G}")
+(totalSupportDFG/totalItems)/((totalSupportDF/totalItems) * (totalSupportG/totalItems))
+totalSupportADF = 4
+totalSupportAD = 6
+totalSupportF = 12
+print("Support ADF")
+totalSupportADF/totalItems
+print("Confidence {AD} -> {F}")
+totalSupportADF/totalSupportAD
+print("Lift {DF} -> {G}")
+(totalSupportADF/totalItems)/((totalSupportAD/totalItems) * (totalSupportF/totalItems))
+print("Support ADF")
+totalSupportADF/totalItems
+print("Confidence {AD} -> {F}")
+totalSupportADF/totalSupportAD
+print("Lift {AD} -> {F}")
+(totalSupportADF/totalItems)/((totalSupportAD/totalItems) * (totalSupportF/totalItems))
+print("Support DF")
+totalSupportDF/totalItems
+print("Confidence {D} -> {F}")
+totalSupportDF/totalSupportD
+totalSupportDF = 8
+totalSupportD = 11
+totalSupportF = 12
+print("Support DF")
+totalSupportDF/totalItems
+print("Confidence {D} -> {F}")
+totalSupportDF/totalSupportD
+print("Lift {D} -> {F}")
+(totalSupportDF/totalItems)/((totalSupportD/totalItems) * (totalSupportF/totalItems))
+ggplot(randomData, aes(x=weight, y=pupilschooldistancebanded, color=weight)) +
+geom_point(shape=1)
+ggplot(randomData, aes(x=weight, y=pupilschooldistancebanded, color=weight)) +
+geom_density()
+ggplot(randomData, aes(x=weight, y=pupilschooldistancebanded, color=weight)) +
+geom_violin()
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=weight)) +
+geom_violin()
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=weight)) +
+geom_boxplot()
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=weight)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=ageinmonths, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=ageinmonths, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+#geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=bmi, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=bmi, color=pupilschooldistancebanded)) +
+geom_area()
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=bmi, color=pupilschooldistancebanded)) +
+geom_area() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=bmi, color=pupilschooldistancebanded)) +
+geom_bar()
+ggplot(randomData, aes(x=pupilschooldistancebanded, color=pupilschooldistancebanded)) +
+geom_bar()
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, color=pupilschooldistancebanded)) +
+geom_bar()
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, color=pupilschooldistancebanded)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, color=pupilschooldistancebanded)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=Schoolindexofmultipledepriv, color=Schoolindexofmultipledepriv)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=bmi, y=schoolindexofmultipledepriv, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=bmi, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=(height * width), color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=(height * weight), color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=(height * weight), color=genderdescription)) +
+geom_dotplot()+
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=(height * weight), color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=sqrt(height * (weight * 35.274))/60, color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=sqrt(height * (weight * 35.274))/60, color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=genderdescription, y=height, color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=genderdescription, y=height, color=genderdescription)) +
+geom_density()
+ggplot(randomData, aes(x=height, color=genderdescription)) +
+geom_density()
+ggplot(randomData, aes(x=weight, color=genderdescription)) +
+geom_density()
+ggplot(randomData, aes(x=ageinmonths, y=school, color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=weight, color=genderdescription)) +
+geom_density()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=ageinmonths)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=ageinmonths)) +
+geom_area()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=ageinmonths)) +
+geom_bin2d()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_bin2d()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_contour()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_crossbar()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_curve()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_density()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_dotplot()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_freqpoly()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_histogram()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=ageinmonths, color=schoolindexofmultipledepriv)) +
+geom_raster()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=weight, color=schoolindexofmultipledepriv)) +
+geom_raster()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=weight, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=weight, color=schoolindexofmultipledepriv)) +
+geom_spoke()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=weight, color=schoolindexofmultipledepriv)) +
+geom_step()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=weight, color=schoolindexofmultipledepriv)) +
+geom_tile()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=genderdescription, color=schoolindexofmultipledepriv)) +
+geom_tile()
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, y=genderdescription, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(randomData, aes(x=genderdescription, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+inspect(randomData)
+randomData
+subset(randomData, ageinmonths < 100)
+ggplot(subset(randomData, ageinmonths < 100), aes(x=genderdescription, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(subset(randomData, ageinmonths < 100), aes(x=bmi, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(randomData, aes(x=height, y=bmi, color=bmi)) +
+geom_point(shape=1)
+ggplot(subset(randomData, ageinmonths > 0), aes(x=bmi, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+```{r warning=FALSE}
+ggplot(subset(randomData, ageinmonths < 100), aes(x=bmi, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(subset(randomData, ageinmonths < 100), aes(x=bmi, y=schoolindexofmultipledepriv, color=genderdescription)) +
+geom_jitter()
+schoolindexofmultipledepriv
+ggplot(subset(randomData, ageinmonths < 100), aes(x=bmi, y=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+ggplot(subset(randomData, ageinmonths < 100), aes(x=schoolindexofmultipledepriv, y=bmi, color=schoolindexofmultipledepriv)) +
+geom_jitter()
+source('~/.active-rstudio-document', echo=TRUE)
+library(ggplot2)
+#EX2
+children = read.table("ncmp_1516_final_non_disclosive_rand_id_published.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+validWH = subset(children, weight > 0 & height > 0)
+ggplot(validWH, aes(weight)) +
+geom_density()
+randomRecordNumber = nrow(children) * 0.05
+set.seed(14)
+randomData = subset(children[sample(nrow(children), randomRecordNumber),], weight > 0 & height > 0)
+ggplot(randomData, aes(weight)) +
+geom_density()
+ggplot(validWH, aes(height)) +
+geom_density()
+ggplot(randomData, aes(height)) +
+geom_density()
+ggplot(randomData, aes(x=ageinmonths, y=bmi, color=ageinmonths)) +
+geom_point(shape=1)
+ggplot(randomData, aes(x=height, y=bmi, color=schoolindexofmultipledepriv)) +
+geom_point(shape=1)
+#EX3
+dataset = matrix(c(8,4,7,11,3,12,8,8), ncol = 8)
+colnames(dataset) <- c("A", "B", "C", "D", "E", "F", "G", "H")
+rownames(dataset) <- c("Count")
+as.table(dataset)
+datasetTwo = matrix(c(5,6,6,4,3,5,5,4,3,8,6,6,8,6,3), ncol = 15)
+colnames(datasetTwo) <- c("AC", "AD", "AF", "AG", "AH", "CD", "CF", "CG", "CH", "DF", "DG", "DH", "FG", "FH", "GH")
+rownames(datasetTwo) <- c("Count")
+as.table(datasetTwo)
+datasetThree = matrix(c(4,3,4,3,4,6,4,2,3), ncol = 9)
+colnames(datasetThree) <- c("ACD", "ACF", "ADF", "CDF", "DFH", "DFG", "DFH", "DGH", "FGH")
+rownames(datasetThree) <- c("Count")
+as.table(datasetThree)
+#EX4
+a = c("NA","NA","1","1","1","NA","1","1","1","NA","1","NA","NA","NA","1")
+b = c("1","NA","NA","1","NA","NA","1","NA","NA","NA","NA","1","NA","NA","NA")
+c = c("NA","1","NA","1","1","NA","NA","NA","1","NA","1","NA","NA","1","1")
+d = c("1","1","1","1","NA","1","NA","1","1","1","1","NA","1","NA","1")
+e = c("NA","NA","NA","NA","NA","NA","1","NA","NA","NA","1","1","NA","NA","NA")
+f = c("1","1","1","NA","1","NA","1","1","1","1","NA","1","1","1","1")
+g = c("NA","1","1","NA","1","NA","NA","1","1","1","NA","NA","1","1","NA")
+h = c("1","NA","NA","1","NA","1","NA","1","NA","1","NA","1","NA","1","1")
+df = data.frame(a,b,c,d,e,f,g,h)
+df
+library(arules)
+aprioriRules = apriori(df, appearance = list(lhs=c("d=1", "f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules)
+aprioriRules2 = apriori(df, appearance = list(lhs=c("a=1", "c=1", "d=1"), default = "rhs"))
+inspect(aprioriRules2)
+aprioriRules3 = apriori(df, appearance = list(lhs=c("f=1", "g=1"), default = "rhs"))
+inspect(aprioriRules3)
+totalItems = 15
+totalSupportDFG = 6
+totalSupportDF = 8
+totalSupportG = 8
+#"Support DFG"
+totalSupportDFG/totalItems
+#"Confidence {DF} -> {G}"
+totalSupportDFG/totalSupportDF
+#"Lift {DF} -> {G}"
+(totalSupportDFG/totalItems)/((totalSupportDF/totalItems) * (totalSupportG/totalItems))
+totalSupportADF = 4
+totalSupportAD = 6
+totalSupportF = 12
+#"Support ADF"
+totalSupportADF/totalItems
+#"Confidence {AD} -> {F}"
+totalSupportADF/totalSupportAD
+#"Lift {AD} -> {F}"
+(totalSupportADF/totalItems)/((totalSupportAD/totalItems) * (totalSupportF/totalItems))
+totalSupportDF = 8
+totalSupportD = 11
+totalSupportF = 12
+#"Support DF"
+totalSupportDF/totalItems
+#"Confidence {D} -> {F}"
+totalSupportDF/totalSupportD
+#"Lift {D} -> {F}"
+(totalSupportDF/totalItems)/((totalSupportD/totalItems) * (totalSupportF/totalItems))
+#EX5
+titanic = read.table("titanic.txt", header = TRUE, stringsAsFactors = T, sep = ",")
+#load package for frequent set mining
+library(arules)
+#run apriori algorithm with default settings
+rules = apriori(titanic)
+#inspection of the result
+inspect(rules)
+#now let us assume, we want to see only those rules that have rhs as survived:
+rules = apriori(titanic,appearance = list(rhs=c("Survived=No", "Survived=Yes"),default="lhs"))
+inspect(rules)
+#let us relax the default settings for the rules we are looking for
+rules = apriori(titanic,parameter = list(minlen=2, supp=0.05, conf=0.8),appearance = list(rhs=c("Survived=No", "Survived=Yes"),default="lhs"))
+library(arulesViz)
+plot(rules, method="graph", control=list(type="items"))
+#EX6
+ggplot(randomData, aes(x=pupilschooldistancebanded, color=pupilschooldistancebanded)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=schoolindexofmultipledepriv, color=schoolindexofmultipledepriv)) +
+geom_bar() +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=pupilschooldistancebanded, y=weight, color=pupilschooldistancebanded)) +
+geom_violin() +
+geom_boxplot(width=.1) +
+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+ggplot(randomData, aes(x=genderdescription, y=sqrt(height * (weight * 35.274))/60, color=genderdescription)) +
+geom_violin() +
+geom_boxplot(width=.1)
+ggplot(randomData, aes(x=height, color=genderdescription)) +
+geom_density()
+ggplot(randomData, aes(x=weight, color=genderdescription)) +
+geom_density()
+ggplot(subset(randomData, ageinmonths < 100), aes(x=schoolindexofmultipledepriv, y=bmi, color=schoolindexofmultipledepriv)) +
+geom_jitter()

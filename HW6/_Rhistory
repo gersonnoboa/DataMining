@@ -1,0 +1,456 @@
+knitr::opts_chunk$set(echo = TRUE)
+hw6 = read.table("HW6_exercise1.txt", header = TRUE, stringsAsFactors = F, sep = "\t")
+library(ggplot2)
+ggplot(hw6, aes(x=hw6.x, y=hw6.y)) +
+geom_point()
+ggplot(hw6, aes(x=x, y=y)) +
+geom_point()
+ggplot(hw6, aes(x=1,5*x, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+ggplot(hw6, aes(x=2*x, y=y)) +
+geom_point() +
+ggtitle("y = 2x")
+ggplot(hw6, aes(x=1.5*x, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+```{r collapse=TRUE, out.width=c('500px', '300px'), fig.show='hold'}
+ggplot(hw6, aes(x=x, y=y)) +
+geom_point() +
+ggtitle("y = x")
+ggplot(hw6, aes(x=1.5*x, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+ggplot(hw6, aes(x=2*x, y=y)) +
+geom_point() +
+ggtitle("y = 2x")
+hw6_15 = 1.5*x
+hw6_15 = 1.5 * (hw6.x)
+hw6_15 = 1.5 * (hw6.x)
+hw6 = read.table("HW6_exercise1.txt", header = TRUE, stringsAsFactors = F, sep = "\t")
+hw6_15 = 1.5 * (hw6.x)
+hw6_15 = 1.5 * (hw6$x)
+ggplot(hw6, aes(x=hw6_15, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+hw6_2 = 2 * hw6$x
+ggplot(hw6, aes(x=x, y=y)) +
+geom_point() +
+ggtitle("y = x")
+hw6_15 = 1.5 * (hw6$x)
+ggplot(hw6, aes(x=hw6_15, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+hw6_2 = 2 * hw6$x
+ggplot(hw6, aes(x=hw6_2, y=y)) +
+geom_point() +
+ggtitle("y = 2x")
+error1 = hw6$x - hw6$y
+error1 = hw6$x - hw6$y
+rmse(error1)
+rmse <- function(e){
+return(sqrt(mean(error ^ 2)))
+rmse <- function(e){
+return(sqrt(mean(error ^ 2)))
+}
+error1 = hw6$x - hw6$y
+rmse(error1)
+rmse(error1)
+a = rmse(error1)
+mean(error1)
+mean(error1)
+mean(error1)
+mean(error1)
+mean(error1)
+mean(error1, na.rm = TRUE)
+mean(error1, na.rm = TRUE)
+error1 = hw6$x - hw6$y
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error ^ 2
+error1 = hw6$x - hw6$y
+error1 = hw6$x - hw6$y
+error1 = hw6$x - hw6$y
+rmse <- function(e){
+return(sqrt(mean(error ^ 2)))
+}
+error
+print("hola")
+print("hola")
+print("hola")
+print("hola")
+2 + 2
+2 + 2
+2 + 2
+2 + 2
+2 + 2
+2 + 2
+print("hola")
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+hw6_2 = 2 * hw6$x
+hw6 = read.table("HW6_exercise1.txt", header = TRUE, stringsAsFactors = F, sep = "\t")
+ggplot(hw6, aes(x=x, y=y)) +
+geom_point() +
+ggtitle("y = x")
+hw6_15 = 1.5 * (hw6$x)
+ggplot(hw6, aes(x=hw6_15, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+hw6_2 = 2 * hw6$x
+ggplot(hw6, aes(x=hw6_2, y=y)) +
+geom_point() +
+ggtitle("y = 2x")
+2 + 2
+print("hola")
+rmse <- function(e){
+return(sqrt(mean(error ^ 2)))
+}
+error1 = hw6$x - hw6$y
+a = rmse(error1)
+rmse <- function(e){
+return(sqrt(mean(e ^ 2)))
+}
+error1 = hw6$x - hw6$y
+a = rmse(error1)
+rmse(error1)
+error1 = hw6$x - hw6$y
+rmse(error1)
+error15 = hw6_15$x - hw6$y
+error15 = hw6_15 - hw6$y
+rmse(error15)
+error2 = hw6_2 - hw6$y
+rmse(error2)
+error1 = hw6$x - hw6$y
+rmse(error1)
+error15 = hw6_15 - hw6$y
+rmse(error15)
+error2 = hw6_2 - hw6$y
+rmse(error2)
+paste("Error for y=X", rmse(error1))
+error1 = hw6$x - hw6$y
+paste("Error for y=X:", rmse(error1))
+error15 = hw6_15 - hw6$y
+paste("Error for y=1.5X:", rmse(error15))
+error2 = hw6_2 - hw6$y
+paste("Error for y=2X:", rmse(error2))
+mean(error1)
+mean(error15)
+wine = read.table("winequality.csv", header = TRUE, stringsAsFactors = F, sep = ";")
+wine = read.table("winequality.csv", header = TRUE, stringsAsFactors = F, sep = ";")
+reg = lm(formula = quality ~ alcohol, data = wine)
+reg
+summary(reg)
+reg = lm(formula = quality ~ pH, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ density, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ sulphates, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ chlorides, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ fixed.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ fixed.acidity, data = wine)
+summary(reg)
+.acidity, data = wine)
+reg = lm(formula = quality ~ volatile.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ citric.acid, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ chlorides, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ free.sulfur.dioxide, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ total.sulfur.dioxide, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ density, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ pH, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ sulphates, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ sulphates, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + free.sulfur.dioxide, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + fixed.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + volatile.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ citric.acid + volatile.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + volatile.acidity, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + citric.acid, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + chlorides, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + total.sulfur.dioxide, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + density, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + pH, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + sulphates, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + alcohol, data = wine)
+summary(reg)
+reg = lm(formula = quality ~ residual.sugar + free.sulfur.dioxide, data = wine)
+summary(reg)
+reg1 = lm(formula = quality ~ residual.sugar, data = wine)
+summary(reg1)
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+perform(1)
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+hw6 = read.table("HW6_exercise1.txt", header = TRUE, stringsAsFactors = F, sep = "\t")
+ggplot(hw6, aes(x=x, y=y)) +
+geom_point() +
+ggtitle("y = x")
+hw6_15 = 1.5 * (hw6$x)
+ggplot(hw6, aes(x=hw6_15, y=y)) +
+geom_point() +
+ggtitle("y = 1.5x")
+hw6_2 = 2 * hw6$x
+ggplot(hw6, aes(x=hw6_2, y=y)) +
+geom_point() +
+ggtitle("y = 2x")
+##help from https://heuristically.wordpress.com/2013/07/12/calculate-rmse-and-mae-in-r-and-sas/
+rmse <- function(e){
+return(sqrt(mean(e ^ 2)))
+}
+error1 = hw6$x - hw6$y
+paste("Error for y=X:", rmse(error1))
+error15 = hw6_15 - hw6$y
+paste("Error for y=1.5X:", rmse(error15))
+error2 = hw6_2 - hw6$y
+paste("Error for y=2X:", rmse(error2))
+wine = read.table("winequality.csv", header = TRUE, stringsAsFactors = F, sep = ";")
+reg1 = lm(formula = quality ~ alcohol, data = wine)
+summary(reg1)
+summary(lm(formula = quality ~ alcohol + residual.sugar, data = wine))
+reg2 = lm(formula = quality ~ alcohol + volatile.acidity, data = wine)
+summary(reg2)
+reg3 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates, data = wine)
+summary(reg3)
+reg4 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates + fixed.acidity, data = wine)
+summary(reg4)
+reg5 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates + fixed.acidity + chlorides, data = wine)
+summary(reg5)
+reg6 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates + fixed.acidity + chlorides + total.sulfur.dioxide, data = wine)
+summary(reg6)
+reg7 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates + fixed.acidity + chlorides + total.sulfur.dioxide + density, data = wine)
+summary(reg7)
+reg8 = lm(formula = quality ~ alcohol + volatile.acidity + sulphates + fixed.acidity + chlorides + total.sulfur.dioxide + density + residual.sugar, data = wine)
+summary(reg8)
+rmse(reg8$residuals)
+help(lm)
+iris = read.table("iris.data", header = FALSE, stringsAsFactors = F, sep = ",")
+irisSubset = subset(iris, V5 != "Iris-virginica")
+autoTest= t.test(irisSubset$V3~irisSubset$V5)
+autoTest
+autoTest$p.value
+#The same as doing this
+#versicolor = subset(iris, V5 == "Iris-versicolor")
+#setosa = subset(iris, V5 == "Iris-setosa")
+#t.test(versicolor$V3, setosa$V3)
+versicolor = subset(iris, V5 == "Iris-versicolor")
+setosa = subset(iris, V5 == "Iris-setosa")
+#adapted from http://stats.stackexchange.com/questions/30394/how-to-perform-two-sample-t-tests-in-r-by-inputting-sample-statistics-rather-tha
+mean1 = mean(versicolor$V3)
+mean2 = mean(setosa$V3)
+sd1 = sd(versicolor$V3)
+sd2 = sd(setosa$V3)
+values = 50
+se = sqrt((sd1^2/values) + (sd2^2/values))
+df = ( (sd1^2/values + sd2^2/values)^2 ) /((sd1^2/values)^2/(values-1) + (sd2^2/values)^2/(values-1) )
+t = 2*pt(-abs((mean1-mean2)/se ),df)
+t
+ggplot(versicolor, aes(x=V3)) +
+geom_density()
+ggplot(setosa, aes(x=V3)) +
+geom_density()
+diamonds = read.table("diamonds.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+train_idx = sample(nrow(diamonds), nrow(diamonds)*0.8)
+train = diamonds[train_idx,]
+test = diamonds[-train_idx,]
+perform <- function(case){
+r = getModel(case)
+test$predictions = predict(newdata=test, r)
+MSE = sqrt((1/nrow(test))*sum((test$price - test$predictions)^2))
+#e = test$price - test$predictions
+#rmse(e)
+return(MSE)
+}
+getModel <- function(case){
+r = 0
+if (case == 1){
+r = lm(formula = price ~ carat + cut + clarity + depth + table + x + y + z, data = train)
+} else if (case == 2){
+r = lm(formula = price ~ carat + cut + clarity + depth + table + x + y + z + poly(carat, 2) + poly(depth, 2), data = train)
+} else if (case == 3){
+r = lm(formula = price ~ carat + cut + clarity + depth + table + x + y + z + carat^3 + carat^2 + depth^3 + depth^2, data = train)
+} else{
+r = lm(formula = price ~ carat + cut + clarity + depth + table + x + y + z + carat^3 + carat^2 + depth^3 + depth^2 + poly(x, 2) + poly(y, 2) +
+poly(z, 2), data = train)
+}
+return(r)
+}
+rmseValues = c(perform(1), perform(2), perform(3), perform(4))
+firstModel = getModel(1)
+paste("RMSE for first model:", rmse( firstModel$residuals), ", prediction:", rmseValues[1])
+secondModel = getModel(2)
+paste("RMSE for second model:", rmse( secondModel$residuals), ", prediction:", rmseValues[2])
+thirdModel = getModel(3)
+paste("RMSE for third model:", rmse( thirdModel$residuals), ", prediction:", rmseValues[3])
+fourthModel = getModel(4)
+paste("RMSE for fourth model", rmse( fourthModel$residuals), ", prediction", rmseValues[4])
+perform(1)
+ggplot(test, aes(x=test$price, y= test$predictions)) +
+geom_point()
+ggplot(test, aes(x=test$price, y= test$predictions)) +
+geom_point()
+test$predictions = predict(newdata=test, getModel(1))
+ggplot(test, aes(x=test$price, y= test$predictions)) +
+geom_point()
+setwd("C:/Users/Gerson Noboa/Google Drive/Documentos/UT/S2/Data Mining/HW6")
+rmd2rscript <- function(infile){
+# read the file
+flIn <- readLines(infile)
+# identify the start of code blocks
+cdStrt <- which(grepl(flIn, pattern = "```{r*", perl = TRUE))
+# identify the end of code blocks
+cdEnd <- sapply(cdStrt, function(x){
+preidx <- which(grepl(flIn[-(1:x)], pattern = "```", perl = TRUE))[1]
+return(preidx + x)
+})
+# define an expansion function
+# strip code block indacators
+flIn[c(cdStrt, cdEnd)] <- ""
+expFun <- function(strt, End){
+strt <- strt+1
+End <- End-1
+return(strt:End)
+}
+idx <- unlist(mapply(FUN = expFun, strt = cdStrt, End = cdEnd,
+SIMPLIFY = FALSE))
+# add comments to all lines except code blocks
+comIdx <- 1:length(flIn)
+comIdx <- comIdx[-idx]
+for(i in comIdx){
+flIn[i] <- paste("#' ", flIn[i], sep = "")
+}
+# create an output file
+nm <- strsplit(infile, split = "\\.")[[1]][1]
+flOut <- file(paste(nm, "[rmd2r].R", sep = ""), "w")
+for(i in 1:length(flIn)){
+cat(flIn[i], "\n", file = flOut, sep = "\t")
+}
+close(flOut)
+}
+rmd2rscript("HW6_B66084.Rmd")
+rmd2rscript("HW6_B66084.Rmd")
+test$predictions = predict(newdata=test, getModel(1))
+ggplot(test, aes(x=test$price, y= test$predictions)) +
+geom_point()
+rmd2rscript("HW6_B66084.Rmd")
+rmd2rscript("HW6_B66084.Rmd")
+rmd2rscript("HW6_B66084.Rmd")
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+test = read.table("test.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+train = read.table("train.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+model <- lm(target ~ connections, data=train)
+summary(model)
+model <- lm(target ~ connections + foreign_conns, data=train)
+summary(model)
+model <- lm(target ~ connections + ccf, data=train)
+summary(model)
+model <- lm(target ~ connections + conns_new, data=train)
+summary(model)
+model <- lm(target ~ connections + time, data=train)
+summary(model)
+model <- lm(target ~ connections + account_age, data=train)
+summary(model)
+model <- lm(target ~ connections + age_group , data=train)
+model <- lm(target ~ connections + agegroup , data=train)
+summary(model)
+model <- lm(target ~ connections + days
+model <- lm(target ~ connections + days , data=train)
+model <- lm(target ~ connections + days, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage2, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage3, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage5, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + time, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + foreign_conns, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + foreign_conns2, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + ccf, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + account_age, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + usage3, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + usage3 + usage2, data=train)
+summary(model)
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + usage3 + usage5, data=train)
+summary(model)
+test$predictions <- predict(newdata=test, model)
+final = data.table()
+final$ID = test$ID
+final = data.frame()
+final$ID = test$ID
+test$ID
+test$predictions
+final <- data.frame(ID=numeric(), target=numeric(), stringsAsFactors=FALSE)
+final$ID = test$ID
+final <- data.frame(ID=numeric(4000), target=numeric(4000), stringsAsFactors=FALSE)
+final$ID = test$ID
+final$target = test$predictions
+write.csv(final)
+final <- data.frame(target=numeric(4000), stringsAsFactors=FALSE)
+final$target = test$predictions
+write.csv(final)
+write.csv(final, file = "submission.csv")
+final <- data.frame(target=numeric(4000), stringsAsFactors=FALSE)
+names(final) <- c("ID", "target")
+test = read.table("test.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+train = read.table("train.csv", header = TRUE, stringsAsFactors = F, sep = ",")
+model <- lm(target ~ connections + days + usage1 + usage4 + agegroup + usage3, data=train)
+test$predictions <- predict(newdata=test, model)
+final <- data.frame(target=numeric(4000), stringsAsFactors=FALSE)
+final$target = test$predictions
+rmd2rscript("HW6_B66084.Rmd")

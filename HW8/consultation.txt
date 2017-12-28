@@ -1,0 +1,11 @@
+ex 2
+probabilty for yes|s,h,c,t)
+
+ex3
+euclidean distance
+small as possible
+investigar sobre k nearest neighbor porque no entiendo ni bolsa
+
+ex4
+rpart
+caret
